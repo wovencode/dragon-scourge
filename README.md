@@ -25,6 +25,7 @@ As with Dragon Knight before it, please keep some things in mind:
 # Installation Instructions
 1. Clone this repo or download the zip.
 2. Create a new database for Dragon Scourge to use, if you don't already have one set up.
+3. Duplicate the `config_RENAME.php` file and rename it to `config.php`.
 3. Edit `config.php` to include the correct values for your database setup.
 4. Upload the contents of the Dragon Scourge folder to your site.
 5. Using a MySQL client such as HeidiSQL or PHPMyAdmin, run the contents of `install.sql` on the database you created.
