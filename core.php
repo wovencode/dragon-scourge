@@ -10,3 +10,6 @@ include_once("scripts/lib.php");
 include_once("scripts/lib2.php");
 include_once("scripts/misc.php");
 include_once("scripts/panels.php");
+
+include_once("scripts/fightmods.php");
+include_once("scripts/spells.php");
