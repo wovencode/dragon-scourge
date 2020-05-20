@@ -156,12 +156,12 @@ function one() {
     
     // Test file permissions.
     $botcheck = false;
-    $f = fopen("images/botcheck/test.txt", "a");
+    $f = fopen("images/botcheck/note.txt", "a");
     if ($f) { 
-        if (fwrite($f,"test")) {
+        if (fwrite($f,"note")) {
             $botcheck = true;
             fclose($f);
-            unlink("images/botcheck/test.txt");
+            unlink("images/botcheck/note.txt");
         }
     }
     $users = false;
