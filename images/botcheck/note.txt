@@ -1,0 +1,1 @@
+Directory is required to keep captcha images for bot checking
