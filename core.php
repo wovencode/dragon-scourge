@@ -2,6 +2,8 @@
 
 include_once("config/config.php");
 
+include_once("scripts/db.php");
+include_once("scripts/tpl.php");
 include_once("scripts/cookies.php");
 include_once("scripts/globals.php");
 include_once("scripts/lib.php");
