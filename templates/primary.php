@@ -18,7 +18,7 @@ $template = <<<END
 <head>
 <title>{{gamename}} :: {{pagetitle}}</title>
 <link rel="stylesheet" href="css/primary.css" type="text/css" />
-<script type="text/javascript" src="scripts/tooltip.js"></script>
+<script type="text/javascript" src="js/tooltip.js"></script>
 <style type="text/css">
 body { background-image: url(images/{{background}}.jpg); }
 </style>
