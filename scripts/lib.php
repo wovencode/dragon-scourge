@@ -21,114 +21,13 @@
 //if (file_exists("install.sql")) { die("Please remove the install.php file from your game directory before continuing."); }
 
 // Setup for superglobal stuff that can't go in globals.php.
-$starttime = getmicrotime();
-$numqueries = 0;
+
 $link = opendb();
 $version = "Beta 5";
 $bnumber = "20";
 $bname = "Consolation Prize Part Deux";
 $bdate = "9.2.2007";
 include("lib2.php");
-
-// Handling for servers with magic_quotes turned on.
-if (get_magic_quotes_gpc()) {
-
-   $_POST = array_map('uber_ss', $_POST);
-   $_GET = array_map('uber_ss', $_GET);
-   $_COOKIE = array_map('uber_ss', $_COOKIE);
-
-}
-$_POST = array_map('uber_mres', $_POST);
-$_POST = array_map('uber_hsc', $_POST);
-$_GET = array_map('uber_mres', $_GET);
-$_GET = array_map('uber_hsc', $_GET);
-$_COOKIE = array_map('uber_mres', $_COOKIE);
-$_COOKIE = array_map('uber_hsc', $_COOKIE);
-
-function uber_ss($value) {
-    
-   $value = is_array($value) ?
-               array_map('uber_ss', $value) :
-               stripslashes($value);
-   return $value;
-   
-}
-
-function uber_mres($value) {
-    
-   $value = is_array($value) ?
-               array_map('uber_mres', $value) :
-               mysql_real_escape_string($value);
-   return $value;
-   
-}
-
-function uber_hsc($value) {
-    
-   $value = is_array($value) ?
-               array_map('uber_hsc', $value) :
-               htmlspecialchars($value);
-   return $value;
-   
-}
-
-function opendb() { // Open database connection.
-
-    include("config.php");
-    extract($dbsettings);
-    $link = mysql_connect($server, $user, $pass) or err(mysql_error(),true);
-    mysql_select_db($name) or err(mysql_error(),true);
-    return $link;
-
-}
-
-function doquery($query) { // Something of a tiny little database abstraction layer.
-    
-    include('config.php');
-    global $numqueries, $controlrow;
-    $sqlquery = mysql_query(preg_replace('/<<([a-zA-Z0-9_\-]+)>>/', $dbsettings["prefix"].'_$1', $query));
-
-    if ($sqlquery == false) {
-        if ($controlrow["debug"] == 1) { die(mysql_error() . "<br /><br />" . $query); } else { die("A MySQL query error occurred. Please contact the game administrator for more help."); }
-    }
-    
-    $numqueries++;
-    return $sqlquery;
-    
-}
-
-function dorow($sqlquery, $force = "") { // Abstraction layer part deux.
-    
-    switch (mysql_num_rows($sqlquery)) {
-        
-        case 0:
-            $row = false;
-            break;
-        case 1:
-            if ($force == "") {
-                $row = mysql_fetch_assoc($sqlquery);
-            } else {
-                $temprow = mysql_fetch_assoc($sqlquery);
-                $row[$temprow[$force]] = $temprow;
-            }
-            break;
-        default:
-            if ($force == "") {
-                while ($temprow = mysql_fetch_assoc($sqlquery)) {
-                    $row[] = $temprow;
-                }
-            } else {
-                while ($temprow = mysql_fetch_assoc($sqlquery)) {
-                    $row[$temprow[$force]] = $temprow;
-                }
-            }
-            break;
-    
-    }
-        
-    return $row;
-    
-}
 
 function gettemplate($templatename) { // SQL query for the template.
     
@@ -205,7 +104,7 @@ function err($error, $system = false, $panels = true) { // Basic little error ha
 function display($title, $content, $panels = true) { // Finalize page and output to browser.
     
     include('config.php');
-    global $controlrow, $userrow, $worldrow, $numqueries, $starttime, $version, $build;
+    global $controlrow, $userrow, $worldrow, $starttime, $version, $build;
     
     if (!isset($controlrow)) {
         $controlrow = dorow(doquery("SELECT * FROM <<control>> WHERE id='1' LIMIT 1"));
@@ -226,11 +125,11 @@ function display($title, $content, $panels = true) { // Finalize page and output
     $row["content"] = $content;
     $row["moddedby"] = $controlrow["moddedby"];
     if ($controlrow["forumurl"] != "") { $row["forumslink"] = "<a href=\"".$controlrow["forumurl"]."\">Support Forums</a>"; } else { $row["forumslink"] = ""; }
-    if ($controlrow["debug"] == 1) { $row["debug"] = "/ " . $numqueries . " Queries / " . round(getmicrotime()-$starttime,4) . " Seconds"; } else { $row["debug"] = ""; }
+    
     if ($row["moddedby"] != "") {
         $row["info"] = $row["moddedby"];
     } else {
-        $row["info"] = "Version <a href=\"index.php?do=version\">" . $row["version"] . "</a> " . $row["debug"];
+        $row["info"] = "Version <a href=\"index.php?do=version\">" . $row["version"] . "</a> ";
     }
     
     // Setup for side panels.
