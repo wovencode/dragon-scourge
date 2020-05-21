@@ -22,12 +22,6 @@
 
 // Setup for superglobal stuff that can't go in globals.php.
 
-#$link = opendb();
-$version = "Beta 5";
-$bnumber = "20";
-$bname = "Consolation Prize Part Deux";
-$bdate = "9.2.2007";
-#include("lib2.php");
 
 function gettemplate($templatename) { // SQL query for the template.
     
@@ -49,7 +43,7 @@ function parsetemplate($template, $array) { // Replace template with proper cont
 function display($title, $content, $panels = true) { // Finalize page and output to browser.
     
     #include('config.php');
-    global $controlrow, $userrow, $worldrow, $starttime, $version, $build;
+    global $controlrow, $userrow, $worldrow, $starttime;
     
     if (!isset($controlrow)) {
         $controlrow = dorow(doquery("SELECT * FROM <<control>> WHERE id='1' LIMIT 1"));
@@ -66,16 +60,9 @@ function display($title, $content, $panels = true) { // Finalize page and output
     $row["gamename"] = $controlrow["gamename"];
     $row["pagetitle"] = $title;
     $row["background"] = "background" . $userrow["world"];
-    $row["version"] = $version;
     $row["content"] = $content;
-    $row["moddedby"] = $controlrow["moddedby"];
+   
     if ($controlrow["forumurl"] != "") { $row["forumslink"] = "<a href=\"".$controlrow["forumurl"]."\">Support Forums</a>"; } else { $row["forumslink"] = ""; }
-    
-    if ($row["moddedby"] != "") {
-        $row["info"] = $row["moddedby"];
-    } else {
-        $row["info"] = "Version <a href=\"index.php?do=version\">" . $row["version"] . "</a> ";
-    }
     
     // Setup for side panels.
     #include("panels.php");
@@ -93,24 +80,6 @@ function display($title, $content, $panels = true) { // Finalize page and output
     }
     
     $page = rtrim($page, "<-!");
-    
-$page .= <<<THEVERYENDOFYOU
-<table cellspacing="0" cellpadding="3" style="width: 95px; color: #ffffff; border: solid 1px #ffffff; background-color: #000000; margin-top: 2px;">
-  <tr>
-    <td width="40%">
-    {{info}}
-    </td>
-    <td width="20%" style="text-align: center;">
-    {{forumslink}}
-    </td>
-    <td width="40%" style="text-align:right;">
-    <a href="index.php?do=version">Dragon Scourge</a> &copy; by <a href="http://www.renderse7en.com">renderse7en</a>.
-    </td>
-  </tr>
-</table>
-</center></body>
-</html>
-THEVERYENDOFYOU;
     
     // Finalize control array for output.
     $page = parsetemplate($page, $row); 

@@ -14,44 +14,6 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-function iddqd() { 
-    
-    global $acctrow;
-    doquery("UPDATE <<accounts>> SET extra1='1' WHERE id='".$acctrow["id"]."' LIMIT 1");
-    $page = "\"Please don't take everything I say so seriously.\"<br /><i><a href=\"http://www.nin.com\">---Trent Reznor</a></i>";
-    display("LMFAO!", $page);
-    
-}
-
-function version() {
-    
-    global $controlrow, $version, $bname, $bdate, $bnumber;
-    $year = date("Y");
-    if ($controlrow["moddedby"] != "") {
-        $moddedby = "<tr><td colspan=\"2\"><hr />" . $controlrow["moddedby"] . "</td></tr>";
-    } else {
-        $moddedby = "";
-    }
-    
-$page = <<<END
-<center>
-<img src="images/r7_logo.png" alt="renderse7en" /><br /><br />
-<span style="font: 12px Verdana;"><a href="http://www.dragonscourge.com" target="_new">Dragon Scourge</a><br />&copy; 2003-$year by <a href="http://www.renderse7en.com">renderse7en</a></b></span><br /><br />
-<table>
-<tr><td>Version Number:</td><td><b>$version</b></td></tr>
-<tr><td>Build Number:</td><td><b>$bnumber</b></td></tr>
-<tr><td>Build Name:</td><td><b>$bname</b></td></tr>
-<tr><td>Build Date:</td><td><b>$bdate</b></td></tr>
-<tr><td colspan="2"><a href="changelog.txt" target="_new">View the Changelog</a></td></tr>
-$moddedby
-</table>
-</center>
-END;
-
-    display("Version Information",$page);
-    
-}
-
 function babblebox2() {
     
     global $userrow, $controlrow;
