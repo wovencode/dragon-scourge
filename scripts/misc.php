@@ -60,7 +60,7 @@ function babblebox2() {
     }
 
     $page = parsetemplate(gettemplate("misc_babblebox"),$row);
-    if ($controlrow["compression"] == 1) { ob_start("ob_gzhandler"); }
+    
     echo $page;
     die();
     
@@ -71,7 +71,7 @@ function showmap() {
     global $controlrow;
     
     $page = gettemplate("misc_showmap");
-    if ($controlrow["compression"] == 1) { ob_start("ob_gzhandler"); }
+    
     echo $page;
     die();
 
