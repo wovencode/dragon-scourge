@@ -75,4 +75,19 @@ function dorow($sqlquery, $force = "") { // Abstraction layer part deux.
     
 }
 
+
+function dobatch($p_query) {
+    $query_split = preg_split ("/[;]+/", $p_query);
+    foreach ($query_split as $command_line) {
+        $command_line = trim($command_line);
+        if ($command_line != '') {
+            $query_result = doquery($command_line);
+            if ($query_result == 0) {
+                break;
+            }
+        }
+    }
+    return $query_result;
+}
+
 ?>
