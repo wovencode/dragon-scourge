@@ -15,6 +15,7 @@
 //	(see our website for that).
 
 $template = <<<END
+<!DOCTYPE html>
 <head>
 <title>{{gamename}} :: {{pagetitle}}</title>
 <link rel="stylesheet" href="css/primary.css" type="text/css" />
