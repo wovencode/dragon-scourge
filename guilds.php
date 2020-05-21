@@ -108,7 +108,7 @@ function guildcreate() {
     if ($userrow["gold"] < $controlrow["guildstartup"]) { err("You do not have enough gold to create a Guild. Starting your own Guild requires ".number_format($controlrow["guildstartup"])." gold. Please <a href=\"index.php\">go back</a> and try again."); }
     if ($userrow["guild"] != 0) { err("You are already a member of another Guild. You must renounce your current membership before starting your own Guild. Please <a href=\"index.php\">go back</a> and try again."); }
     $appquery = doquery("SELECT * FROM <<guildapps>> WHERE charid='".$userrow["id"]."' LIMIT 1");
-    if (mysql_num_rows($appquery) != 0) { err("You have already applied to join another Guild. Please <a href=\"index.php\">go back</a> and try again."); }
+    if (mysqli_num_rows($appquery) != 0) { err("You have already applied to join another Guild. Please <a href=\"index.php\">go back</a> and try again."); }
     if ($userrow["level"] < $controlrow["guildstartlvl"]) { err("You cannot join a guild until you are at least Level ".$controlrow["guildstartlvl"].". Please continue playing until your character is Level ".$controlrow["guildstartlvl"].", then try again."); }
     
     if (isset($_POST["submit"])) {
@@ -242,7 +242,7 @@ function guildapp() {
     if ($userrow["gold"] < $guild["joincost"]) { err("You do not have enough gold to join this Guild. Joining this Guild requires ".number_format($guild["joincost"])." gold. Please <a href=\"index.php\">go back</a> and try again."); }
     if ($userrow["guild"] != 0) { err("You are already a member of another Guild. You must renounce your current membership before joining this Guild. Please <a href=\"index.php\">go back</a> and try again."); }
     $appquery = doquery("SELECT * FROM <<guildapps>> WHERE charid='".$userrow["id"]."' LIMIT 1");
-    if (mysql_num_rows($appquery) != 0) { err("You have already applied to join another Guild. Please <a href=\"index.php\">go back</a> and try again."); }
+    if (mysqli_num_rows($appquery) != 0) { err("You have already applied to join another Guild. Please <a href=\"index.php\">go back</a> and try again."); }
     if ($userrow["level"] < $controlrow["guildjoinlvl"]) { err("You cannot join a guild until you are at least Level ".$controlrow["guildjoinlvl"].". Please continue playing until your character is Level ".$controlrow["guildjoinlvl"].", then try again."); }
     
     if (isset($_POST["yes"])) {

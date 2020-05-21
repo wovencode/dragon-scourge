@@ -37,7 +37,7 @@ function babblebox2() {
         
         // Only keep 20 shouts in DB at any one time.
         $check = doquery("SELECT * FROM <<babblebox>> $g");
-        if (mysql_num_rows($check) > 20) {
+        if (mysqli_num_rows($check) > 20) {
             $delete1 = dorow(doquery("SELECT id FROM <<babblebox>> $g ORDER BY id LIMIT 1"));
             $delete2 = doquery("DELETE FROM <<babblebox>> WHERE id='".$delete1["id"]."' LIMIT 1");
         }

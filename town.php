@@ -24,8 +24,8 @@ function dotown() { // Default town screen.
     
     global $userrow;
     $newpm = doquery("SELECT * FROM <<messages>> WHERE recipientid='".$userrow["id"]."' AND status='0'");
-    if (mysql_num_rows($newpm) > 0) {
-        $row["unread"] = "<b>(".mysql_num_rows($newpm)." new)</b>";
+    if (mysqli_num_rows($newpm) > 0) {
+        $row["unread"] = "<b>(".mysqli_num_rows($newpm)." new)</b>";
     } else {
         $row["unread"] = "";
     }

@@ -21,7 +21,7 @@ if (isset($_GET["code"])) {
 } else { die("Invalid account verification code."); }
     
 $query = doquery("SELECT * FROM <<accounts>> WHERE verifycode='$code' LIMIT 1");
-if (mysql_num_rows($query) != 1) {
+if (mysqli_num_rows($query) != 1) {
     die("Invalid account verification code.");
 } else {
     $update = doquery("UPDATE <<accounts>> SET verifycode='1' WHERE verifycode='$code' LIMIT 1");
