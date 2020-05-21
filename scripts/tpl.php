@@ -115,7 +115,6 @@ THEVERYENDOFYOU;
     // Finalize control array for output.
     $page = parsetemplate($page, $row); 
     
-    if ($controlrow["compression"] == 1) { ob_start("ob_gzhandler"); }
     echo $page;
     die();
 }
