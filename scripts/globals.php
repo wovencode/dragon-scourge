@@ -14,15 +14,16 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-// Config.php.
-include("config.php");
+
+#include("core.php");
+
 if (trim(COOKIE_SALT) == "") { die("Invalid setting for secretword in config.php. This setting must never be blank."); }
 
 // Control row.
 $controlrow = dorow(doquery("SELECT * FROM <<control>> WHERE id='1' LIMIT 1"));
 
 // Account row.
-include("cookies.php");
+#include("cookies.php");
 $acctrow = checkcookies();
 if ($acctrow == false && substr($_SERVER["REQUEST_URI"], -21) != "users.php?do=register") { die(header("Location: login.php?do=login")); }
 if ($acctrow != false && $acctrow["characters"] == 0 && substr($_SERVER["REQUEST_URI"], -20) != "users.php?do=charnew") { die(header("Location: users.php?do=charnew")); }

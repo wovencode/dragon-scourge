@@ -16,7 +16,7 @@
 
 function checkcookies() {
 
-    include('config.php');
+   # include('config.php');
     global $controlrow;
     
     $row = false;

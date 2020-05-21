@@ -22,12 +22,14 @@
 
 // Setup for superglobal stuff that can't go in globals.php.
 
-$link = opendb();
+#$link = opendb();
+
 $version = "Beta 5";
 $bnumber = "20";
 $bname = "Consolation Prize Part Deux";
 $bdate = "9.2.2007";
-include("lib2.php");
+
+#include("lib2.php");
 
 function is_email($email) { // Thanks to "mail(at)philipp-louis.de" from php.net!
 
