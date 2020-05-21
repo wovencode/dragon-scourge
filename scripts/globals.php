@@ -24,19 +24,6 @@ $controlrow = dorow(doquery("SELECT * FROM <<control>> WHERE id='1' LIMIT 1"));
 // ---------------------------------------------------------------------------------------
 $acctrow = checkcookies();
 
-if ($acctrow == false) {
-	$pass = false;
-	
-	if (strpos($_SERVER["REQUEST_URI"], "?do=register") == true || strpos($_SERVER["REQUEST_URI"], "?do=login") == true) {
-		$pass = true;
-	}
-
-	if (!$pass) {
-		die(header("Location: login.php?do=login"));
-	}
-
-}
-
 if ($acctrow != false && $acctrow["characters"] == 0 && strpos($_SERVER["REQUEST_URI"], "?do=charnew") === false) {
 	die(header("Location: users.php?do=charnew"));
 }
