@@ -67,8 +67,6 @@ function display($content, $panels = true) {
         $row["bottomnav"] = "";
     }
     
-    $page = rtrim($page, "<-!");
-    
     // Finalize control array for output.
     $page = parsetemplate($page, $row); 
     
