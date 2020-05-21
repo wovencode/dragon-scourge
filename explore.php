@@ -14,6 +14,8 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
+include_once("core.php");
+
 function doexplore() { // Default explore screen.
     
     display("Exploring", gettemplate("explore"));

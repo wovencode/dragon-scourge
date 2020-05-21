@@ -14,7 +14,7 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-include("lib.php");
+include_once("core.php");
 
 // Get a bunch of stuff.
 if (isset($_GET["id"]) && is_numeric($_GET["id"])) { $id = $_GET["id"]; }

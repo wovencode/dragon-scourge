@@ -14,7 +14,7 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-include("lib.php");
+include_once("core.php");
 
 if (isset($_GET["code"])) {
     $code = $_GET["code"];

@@ -16,8 +16,7 @@
 
 error_reporting(E_ALL);
 
-include("lib.php");
-include("globals.php");
+include_once("core.php");
 
 if(isset($_GET["do"])) {
     $do = explode(":",$_GET["do"]);

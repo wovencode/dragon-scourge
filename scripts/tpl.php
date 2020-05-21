@@ -48,7 +48,7 @@ function parsetemplate($template, $array) { // Replace template with proper cont
 
 function display($title, $content, $panels = true) { // Finalize page and output to browser.
     
-    include('config.php');
+    #include('config.php');
     global $controlrow, $userrow, $worldrow, $starttime, $version, $build;
     
     if (!isset($controlrow)) {
@@ -78,7 +78,7 @@ function display($title, $content, $panels = true) { // Finalize page and output
     }
     
     // Setup for side panels.
-    include("panels.php");
+    #include("panels.php");
     if ($panels == true) { 
         $row["leftnav"] = panelleft(); 
         $row["rightnav"] = panelright();

@@ -14,6 +14,8 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
+include_once("core.php");
+
 // Before allowing anything else, we make sure the person is actually in town.
 global $townrow;
 if ($townrow == false) { die(header("Location: index.php")); }

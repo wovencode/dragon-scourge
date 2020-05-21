@@ -14,7 +14,8 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-include("lib.php");
+include_once("core.php");
+
 if (isset($_GET["do"])) { $do = $_GET["do"]; } else { $do = ""; }
 
 switch($do) {
@@ -32,7 +33,7 @@ function login() {
     if (isset($_POST["submit"])) {
         
         // Setup.
-        include("config.php");
+        #include("config.php");
         extract($_POST);
         $query = doquery("SELECT * FROM <<accounts>> WHERE username='$username' LIMIT 1");
         $row = dorow($query);
@@ -58,7 +59,7 @@ function login() {
 
 function logout() {
     
-    include("globals.php");
+    #include("globals.php");
     setcookie($controlrow["cookiename"], "", (time()-3600), "/", $controlrow["cookiedomain"], 0);
     die(header("Location: login.php?do=login"));
     

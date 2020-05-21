@@ -14,8 +14,7 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-include("lib.php");
-include("globals.php");
+include_once("core.php");
 
 $perpix = 100 / ($worldrow["size"] * 2);
 $text = "&";

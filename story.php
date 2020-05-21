@@ -14,8 +14,7 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-include("lib.php");
-include("globals.php");
+include_once("core.php");
 
 $story = dorow(doquery("SELECT * FROM <<story>> WHERE id='".$userrow["story"]."' LIMIT 1"));
 

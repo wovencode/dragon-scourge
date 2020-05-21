@@ -14,9 +14,7 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-include("lib.php");
-include("globals.php");
-include("fightmods.php");
+include_once("core.php");
 
 global $userrow;
 $monsterrow = array();
@@ -163,7 +161,7 @@ function dofight() {
         }
         if ($isavailable == 0) { err("You don't have that spell."); }
         
-        include("spells.php");
+        #include("spells.php");
         $fightrow["message"] = $spells[$_POST["spellid"]]["fname"]($_POST["spellid"]);
         $monsterrow["currenthp"] -= ($fightrow["playerphysdamage"] + $fightrow["playermagicdamage"] + $fightrow["playerfiredamage"] + $fightrow["playerlightdamage"]);
         if ($monsterrow["currenthp"] <= 0) { youwin(); }
