@@ -22,8 +22,8 @@ function opendb() { // Open database connection.
 
     include("config.php");
     extract($dbsettings);
-    $link = mysql_connect($server, $user, $pass) or err(mysql_error(),true);
-    mysql_select_db($name) or err(mysql_error(),true);
+    $link = mysqli_connect($server, $user, $pass) or err(mysqli_error(),true);
+    mysqli_select_db($name) or err(mysqli_error(),true);
     return $link;
 
 }
@@ -32,10 +32,10 @@ function doquery($query) { // Something of a tiny little database abstraction la
     
     include('config.php');
     global $controlrow;
-    $sqlquery = mysql_query(preg_replace('/<<([a-zA-Z0-9_\-]+)>>/', $dbsettings["prefix"].'_$1', $query));
+    $sqlquery = mysqli_query(preg_replace('/<<([a-zA-Z0-9_\-]+)>>/', $dbsettings["prefix"].'_$1', $query));
 
     if ($sqlquery == false) {
-        if ($controlrow["debug"] == 1) { die(mysql_error() . "<br /><br />" . $query); } else { die("A MySQL query error occurred. Please contact the game administrator for more help."); }
+        if ($controlrow["debug"] == 1) { die(mysqli_error() . "<br /><br />" . $query); } else { die("A MySQL query error occurred. Please contact the game administrator for more help."); }
     }
     
     return $sqlquery;
@@ -44,26 +44,26 @@ function doquery($query) { // Something of a tiny little database abstraction la
 
 function dorow($sqlquery, $force = "") { // Abstraction layer part deux.
     
-    switch (mysql_num_rows($sqlquery)) {
+    switch (mysqli_num_rows($sqlquery)) {
         
         case 0:
             $row = false;
             break;
         case 1:
             if ($force == "") {
-                $row = mysql_fetch_assoc($sqlquery);
+                $row = mysqli_fetch_assoc($sqlquery);
             } else {
-                $temprow = mysql_fetch_assoc($sqlquery);
+                $temprow = mysqli_fetch_assoc($sqlquery);
                 $row[$temprow[$force]] = $temprow;
             }
             break;
         default:
             if ($force == "") {
-                while ($temprow = mysql_fetch_assoc($sqlquery)) {
+                while ($temprow = mysqli_fetch_assoc($sqlquery)) {
                     $row[] = $temprow;
                 }
             } else {
-                while ($temprow = mysql_fetch_assoc($sqlquery)) {
+                while ($temprow = mysqli_fetch_assoc($sqlquery)) {
                     $row[$temprow[$force]] = $temprow;
                 }
             }
