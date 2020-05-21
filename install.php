@@ -269,7 +269,6 @@ function four() {
         compression='$compression',
         debug='$debug',
         botcheck='$botcheck',
-        moddedby='',
         pvprefresh='$pvprefresh',
         pvptimeout='$pvptimeout',
         guildstartup='$guildstartup',
