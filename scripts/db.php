@@ -1,7 +1,5 @@
 <?php
 
-// lib.php :: Common functions used throughout the program.
-
 //	Dragon Scourge
 //
 //	Program authors: Jamin Blount
@@ -17,7 +15,6 @@
 //	(see our website for that).
 
 
-
 function opendb()
 {
 
@@ -30,16 +27,25 @@ function opendb()
 
 function doquery($query) { // Something of a tiny little database abstraction layer.
     
+    $link = opendb();
+    
     #include('config.php');
     global $controlrow;
-    $sqlquery = mysqli_query(preg_replace('/<<([a-zA-Z0-9_\-]+)>>/', DB_PREFIX .'_$1', $query));
+    
+    $sqlquery = mysqli_query($link, preg_replace('/<<([a-zA-Z0-9_\-]+)>>/', DB_PREFIX .'_$1', $query));
 
     if ($sqlquery == false) {
-        if ($controlrow["debug"] == 1) { die(mysqli_error() . "<br /><br />" . $query); } else { die("A MySQL query error occurred. Please contact the game administrator for more help."); }
+        die($_SERVER["SCRIPT_NAME"] . "<br>" . mysqli_error($link) . "<br>" . $query);
     }
     
     return $sqlquery;
     
+}
+
+function getInsertId()
+{
+	$link = opendb();
+	return mysqli_insert_id($link);
 }
 
 function dorow($sqlquery, $force = "") { // Abstraction layer part deux.
@@ -76,8 +82,8 @@ function dorow($sqlquery, $force = "") { // Abstraction layer part deux.
 }
 
 
-function dobatch($p_query) {
-    $query_split = preg_split ("/[;]+/", $p_query);
+function dobatch($sqlquery) {
+    $query_split = preg_split ("/[;]+/", $sqlquery);
     foreach ($query_split as $command_line) {
         $command_line = trim($command_line);
         if ($command_line != '') {
