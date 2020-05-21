@@ -137,7 +137,7 @@ function paneltop($loggedin = true) {
             $charname = $userrow["charname"];
         }
         $top = "<div class=\"big\">\n<center><b>$charname</b>$admin<br />\n";
-        $top .= "[ <a href=\"login.php?do=logout\">Log Out</a> | <a href=\"users.php?do=settings\">Account</a> | <a href=\"users.php?do=characters\">Characters</a> | <a href=\"help.php\">Help</a> ]\n";
+        $top .= "[ <a href=\"login.php?do=logout\">Log Out</a> | <a href=\"users.php?do=settings\">Account</a> | <a href=\"users.php?do=characters\">Characters</a> ]\n";
         $top .= "</center></div>\n";
         
     } else {
