@@ -18,21 +18,21 @@
 
 
 
-function opendb() { // Open database connection.
+function opendb()
+{
 
-    include("config.php");
-    extract($dbsettings);
-    $link = mysqli_connect($server, $user, $pass) or err(mysqli_error(),true);
-    mysqli_select_db($name) or err(mysqli_error(),true);
+    
+    $link = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME, DB_PORT, DB_SOCKET) or die(mysqli_error());
+    mysqli_select_db($link, DB_NAME) or die(mysqli_error());
     return $link;
 
 }
 
 function doquery($query) { // Something of a tiny little database abstraction layer.
     
-    include('config.php');
+    #include('config.php');
     global $controlrow;
-    $sqlquery = mysqli_query(preg_replace('/<<([a-zA-Z0-9_\-]+)>>/', $dbsettings["prefix"].'_$1', $query));
+    $sqlquery = mysqli_query(preg_replace('/<<([a-zA-Z0-9_\-]+)>>/', DB_PREFIX .'_$1', $query));
 
     if ($sqlquery == false) {
         if ($controlrow["debug"] == 1) { die(mysqli_error() . "<br /><br />" . $query); } else { die("A MySQL query error occurred. Please contact the game administrator for more help."); }
