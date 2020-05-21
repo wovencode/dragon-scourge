@@ -71,7 +71,7 @@ function storyteleport() { // Sends to a new location, or just displays a chunk 
     }
         
     $story["story"] = nl2br($story["story"]);
-    display($story["title"], parsetemplate(gettemplate("story_teleport"), $story));
+    display(parsetemplate(gettemplate("story_teleport"), $story));
 
 }
 
@@ -89,7 +89,7 @@ function storymonster() {
     }
     
     $story["story"] = nl2br($story["story"]);
-    display($story["title"], parsetemplate(gettemplate("story_monster"), $story));
+    display(parsetemplate(gettemplate("story_monster"), $story));
     
 }
 
@@ -227,7 +227,7 @@ function storyitem() {
     }
     
     $story["story"] = nl2br($story["story"]);
-    display($story["title"], parsetemplate(gettemplate("story_item"), $story));
+    display(parsetemplate(gettemplate("story_item"), $story));
     
 }
 

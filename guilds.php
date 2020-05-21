@@ -96,7 +96,7 @@ function guildhome() {
     } else { $pagerow["news"] = "No news yet."; }
     
     $title = "[".$guild["tagline"]."] ".$guild["name"] . " (Honor: ".$guild["honor"].")";
-    display($title, parsetemplate(gettemplate($template),$pagerow));
+    display(parsetemplate(gettemplate($template),$pagerow));
     
 }
 
