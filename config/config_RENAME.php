@@ -1,4 +1,4 @@
-<?php // config.php :: Low-level app/database variables.
+<?php
 
 //	Dragon Scourge
 //
@@ -14,12 +14,18 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-$dbsettings = Array(
-        "server"        => "localhost",     // MySQL server name. (Usually localhost.)
-        "user"          => "",              // MySQL username.
-        "pass"          => "",              // MySQL password.
-        "name"          => "",              // MySQL database name.
-        "prefix"        => "sx",            // Prefix for table names.
-        "secretword"    => "");             // Secret word used when hashing information for cookies.
-        
-?>
+/*
+* Database Config
+*/
+define("DB_SERVER", 	'localhost');			// MySQL server name. (Usually localhost.)
+define("DB_USER", 		'');					// MySQL username.
+define("DB_PASSWORD", 	'');					// MySQL password.
+define("DB_NAME", 		'');					// MySQL database name.
+define("DB_PREFIX", 	'ds');					// Prefix for table names (default ds = dragon scourge).
+define("DB_PORT", 		3306);
+define("DB_SOCKET", 	null);
+
+/*
+* Cookie Config
+*/
+define("COOKIE_SALT",	'ds');					// Secret word used when hashing information for cookies.
