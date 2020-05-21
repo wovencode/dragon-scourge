@@ -43,7 +43,7 @@ function login() {
         if ($row["verifycode"] != 1) { err("You have not yet verified your account. Please click the link found in your Account Verification email before continuing. If you never received the email, please check your spam filter settings or contact the game administrator for further assistance.", false, false); }
         
         // Finish.
-        $newcookie = $row["id"] . " " . $username . " " . md5($row["password"] . "--" . $dbsettings["secretword"]);
+        $newcookie = $row["id"] . " " . $username . " " . md5($row["password"] . "--" . COOKIE_SALT);
         if (isset($remember)) { $expiretime = time()+31536000; $newcookie .= " 1"; } else { $expiretime = 0; $newcookie .= " 0"; }
         setcookie($controlrow["cookiename"], $newcookie, $expiretime, "/", $controlrow["cookiedomain"], 0);
         die(header("Location: index.php"));
