@@ -54,7 +54,8 @@ function selectDatabase($link=NULL) : bool
 	
 }
 
-function doquery($query) { // Something of a tiny little database abstraction layer.
+function doquery($query)
+{
     
     $link = connectDatabase();
     
@@ -71,13 +72,16 @@ function doquery($query) { // Something of a tiny little database abstraction la
     
 }
 
-function getInsertId()
+function getInsertId($link=NULL)
 {
-	$link = connectDatabase();
-	return mysqli_insert_id($link);
+	$link = $link ?: connectDatabase();
+	$id = mysqli_insert_id($link);
+	
+	return $id > 0 ? $id : 1;
 }
 
-function dorow($sqlquery, $force = "") { // Abstraction layer part deux.
+function dorow($sqlquery, $force = "")
+{
     
     switch (mysqli_num_rows($sqlquery)) {
         
