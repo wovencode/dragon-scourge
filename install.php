@@ -22,7 +22,7 @@ $page = "one";
 
 if (isset($_GET["page"]))
 {
-$page = $_GET["page"];
+	$page = $_GET["page"];
 }
 
 switch ($page)
@@ -61,8 +61,8 @@ function one() {
     // Display status.
     if ($botcheck) { $botcheck = "<span style=\"color: Green;\">Pass</span>"; } else { $botcheck = "<span style=\"color: red;\">Fail</span>"; }
     if ($users) { $users = "<span style=\"color: Green;\">Pass</span>"; } else { $users = "<span style=\"color: red;\">Fail</span>"; }
-    if (MYSQLRESULT) { $mysqlresult = "<span style=\"color: Green;\">Pass</span>"; } else { $mysqlresult = "<span style=\"color: red;\">Fail</span>"; }
-    if (DBRESULT) { $dbresult = "<span style=\"color: Green;\">Pass</span>"; } else { $dbresult = "<span style=\"color: red;\">Fail</span>"; }
+    if (connectDatabase()) { $mysqlresult = "<span style=\"color: Green;\">Pass</span>"; } else { $mysqlresult = "<span style=\"color: red;\">Fail</span>"; }
+    if (selectDatabase()) { $dbresult = "<span style=\"color: Green;\">Pass</span>"; } else { $dbresult = "<span style=\"color: red;\">Fail</span>"; }
     
     // Done. Show page.
 $page = <<<THEVERYENDOFYOU
