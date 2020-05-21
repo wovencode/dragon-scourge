@@ -14,11 +14,19 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-include_once("core.php");
+include_once("config/config.php");
+include_once("scripts/db.php");
+include_once("scripts/tpl.php");
 
 $page = "one";
-if (isset($_GET["page"])) { $page = $_GET["page"]; }
-switch ($page) {
+
+if (isset($_GET["page"]))
+{
+$page = $_GET["page"];
+}
+
+switch ($page)
+{
     case "one": one(); break;
     case "two": two(); break;
     case "three": three(); break;
