@@ -407,8 +407,8 @@ function charnew() {
             
             // Update account row.
             $default = "";
-            if (isset($setdefault)) { $default = "activechar='".mysql_insert_id()."', "; }
-            if ($acctrow["characters"] == 0) { $default = "activechar='".mysql_insert_id()."', "; }
+            if (isset($setdefault)) { $default = "activechar='".getInsertId()."', "; }
+            if ($acctrow["characters"] == 0) { $default = "activechar='".getInsertId()."', "; }
             $query2 = doquery("UPDATE <<accounts>> SET $default characters=characters+1 WHERE id='".$acctrow["id"]."' LIMIT 1");
             
             // And we're finished.

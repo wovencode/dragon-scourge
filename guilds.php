@@ -147,7 +147,7 @@ function guildcreate() {
             $query = doquery("INSERT INTO <<guilds>> SET $querystring");
 
             // Now update the Founder's userrow.
-            $query = doquery("UPDATE <<users>> SET gold=gold-".$controlrow["guildstartup"].", guild='".mysql_insert_id()."',guildrank='5',guildtag='$tagline',tagcolor='$color1',namecolor='$color2' WHERE id='".$userrow["id"]."' LIMIT 1");
+            $query = doquery("UPDATE <<users>> SET gold=gold-".$controlrow["guildstartup"].", guild='".getInsertId()."',guildrank='5',guildtag='$tagline',tagcolor='$color1',namecolor='$color2' WHERE id='".$userrow["id"]."' LIMIT 1");
             
             // And we're done.
             display("Create a Guild", "Your guild was successfully created.<br /><br />You may now return to <a href=\"index.php\">the game</a>.");

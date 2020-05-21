@@ -504,7 +504,7 @@ function duelchallenge() {
     
     // No errors, so create the PVP record and update everyone's userrow.
     $query = doquery("INSERT INTO <<pvp>> SET id='',player1id='".$userrow["id"]."',player2id='".$newuserrow["id"]."',player1name='".$userrow["charname"]."',player2name='".$newuserrow["charname"]."',playerturn='".$newuserrow["id"]."',turntime=NOW(),fightrow=''");
-    $query2 = doquery("UPDATE <<users>> SET currentpvp='".mysql_insert_id()."' WHERE id='".$newuserrow["id"]."' OR id='".$userrow["id"]."' LIMIT 2");
+    $query2 = doquery("UPDATE <<users>> SET currentpvp='".getInsertId()."' WHERE id='".$newuserrow["id"]."' OR id='".$userrow["id"]."' LIMIT 2");
     display("Duel Challenge",parsetemplate(gettemplate("pvp_challenge"),$newuserrow));
     
 }
