@@ -266,7 +266,6 @@ function four() {
         showsigbot='$showsigbot',
         adminemail='$adminemail',
         verifyemail='$verifyemail',
-        compression='$compression',
         debug='$debug',
         botcheck='$botcheck',
         pvprefresh='$pvprefresh',

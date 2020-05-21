@@ -66,7 +66,6 @@ CREATE TABLE `<<control>>` (
   `showsigbot` tinyint(3) unsigned NOT NULL default '0',
   `adminemail` varchar(200) NOT NULL default '',
   `verifyemail` tinyint(3) unsigned NOT NULL default '0',
-  `compression` tinyint(3) unsigned NOT NULL default '0',
   `debug` tinyint(3) unsigned NOT NULL default '0',
   `botcheck` int(10) unsigned NOT NULL default '0',
   `moddedby` text NOT NULL,
