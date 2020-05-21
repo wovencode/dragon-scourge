@@ -29,7 +29,7 @@ function dotown() { // Default town screen.
     } else {
         $row["unread"] = "";
     }
-    display("In Town", parsetemplate(gettemplate("town"), $row));
+    display(parsetemplate(gettemplate("town"), $row));
 
 }
 
@@ -49,11 +49,11 @@ function inn() { // Resting at the inn restores hp/mp/tp.
         $userrow["currenttp"] = $userrow["maxtp"];
         $userrow["gold"] -= $townrow["innprice"];
         $query = doquery("UPDATE <<users>> SET currenthp='".$userrow["maxhp"]."', currentmp='".$userrow["maxmp"]."', currenttp='".$userrow["maxtp"]."', gold='".$userrow["gold"]."' WHERE id='".$userrow["id"]."' LIMIT 1");
-        display("Rest at the Inn", gettemplate("town_inn2"));
+        display(gettemplate("town_inn2"));
         
     } elseif (isset($_POST["abortmission"])) { die(header("Location: index.php")); }
     
-    display("Rest at the Inn", parsetemplate(gettemplate("town_inn1"), $townrow));
+    display(parsetemplate(gettemplate("town_inn1"), $townrow));
     
 }
 
@@ -72,7 +72,7 @@ function map() { // Buy maps to towns for the Travel To menu.
             $userrow["townslist"] .= "," . $townrow["id"];
             $userrow["gold"] -= $townrow["mapprice"];
             $query = doquery("UPDATE <<users>> SET townslist='".$userrow["townslist"]."', gold='".$userrow["gold"]."' WHERE id='".$userrow["id"]."' LIMIT 1");
-            display("Buy Maps", gettemplate("town_map3"));
+            display(gettemplate("town_map3"));
         } else {
             err("Invalid action. Please <a href=\"index.php\">go back</a> and try again.");
         }
@@ -85,7 +85,7 @@ function map() { // Buy maps to towns for the Travel To menu.
         if ($userrow["gold"] < $townrow["mapprice"]) { err("You do not have enough gold to buy this map. Please <a href=\"index.php\">go back</a> and try again."); }
         
         if ($townrow != false) {
-            display("Buy Maps", parsetemplate(gettemplate("town_map2"), $townrow));
+            display(parsetemplate(gettemplate("town_map2"), $townrow));
         } else {
             err("Invalid action. Please <a href=\"index.php\">go back</a> and try again.");
         }
@@ -107,7 +107,7 @@ function map() { // Buy maps to towns for the Travel To menu.
             }
         }
         $row["maptable"] .= "</table></form>\n";
-        display("Buy Maps", parsetemplate(gettemplate("town_map1"), $row));
+        display(parsetemplate(gettemplate("town_map1"), $row));
         
     }
     
@@ -192,7 +192,7 @@ function buy() { // Buy items from merchants.
         
         // And we're done.
         updateuserrow();
-        display("Buy Weapons & Armor", gettemplate("town_buy3"));
+        display(gettemplate("town_buy3"));
         
     } elseif (isset($_POST["two"])) {
         
@@ -238,7 +238,7 @@ function buy() { // Buy items from merchants.
         $row["newidstring"] = $newfullitem["fullid"];
         
         // And we're done.
-        display("Buy Weapons & Armor", parsetemplate(gettemplate("town_buy2" . $full),$row));
+        display(parsetemplate(gettemplate("town_buy2" . $full),$row));
         
     } else {
         
@@ -293,7 +293,7 @@ function buy() { // Buy items from merchants.
         }
 
         // And we're done.
-        display("Buy Weapons & Armor", parsetemplate(gettemplate("town_buy1"),$row));
+        display(parsetemplate(gettemplate("town_buy1"),$row));
         
     }
     
@@ -328,11 +328,11 @@ function gamble() {
             if ($thecup == $thewin) {
                 $userrow["gold"] += ($amount * 10);
                 doquery("UPDATE <<users>> SET gold=gold+($amount * 10) WHERE id='".$userrow["id"]."' LIMIT 1");
-                display("Gamble", "You won!<br /><br />You just picked up <b>".($amount * 10)." Gold</b>.<br /><br />Care to <a href=\"index.php?do=gamble&mode=hard\">try again</a> or would you rather go back to <a href=\"index.php\">town</a>?");
+                display("You won!<br /><br />You just picked up <b>".($amount * 10)." Gold</b>.<br /><br />Care to <a href=\"index.php?do=gamble&mode=hard\">try again</a> or would you rather go back to <a href=\"index.php\">town</a>?");
             } else {
                 $userrow["gold"] -= $amount;
                 doquery("UPDATE <<users>> SET gold=gold-$amount WHERE id='".$userrow["id"]."' LIMIT 1");
-                display("Gamble", "You lost!<br /><br />Sorry buddy, but we're gonna have to take your <b>".$amount." Gold</b>.<br /><br />Care to <a href=\"index.php?do=gamble&mode=hard\">try again</a> or would you rather go back to <a href=\"index.php\">town</a>?");
+                display("You lost!<br /><br />Sorry buddy, but we're gonna have to take your <b>".$amount." Gold</b>.<br /><br />Care to <a href=\"index.php?do=gamble&mode=hard\">try again</a> or would you rather go back to <a href=\"index.php\">town</a>?");
             }
             
         }
@@ -345,11 +345,11 @@ function gamble() {
             if ($thecup == $thewin) {
                 $userrow["gold"] += ($amount * 2);
                 doquery("UPDATE <<users>> SET gold=gold+($amount * 2) WHERE id='".$userrow["id"]."' LIMIT 1");
-                display("Gamble", "You won!<br /><br />You just picked up <b>".($amount * 2)." Gold</b>.<br /><br />Care to <a href=\"index.php?do=gamble\">try again</a> or would you rather go back to <a href=\"index.php\">town</a>?");
+                display("You won!<br /><br />You just picked up <b>".($amount * 2)." Gold</b>.<br /><br />Care to <a href=\"index.php?do=gamble\">try again</a> or would you rather go back to <a href=\"index.php\">town</a>?");
             } else {
                 $userrow["gold"] -= $amount;
                 doquery("UPDATE <<users>> SET gold=gold-$amount WHERE id='".$userrow["id"]."' LIMIT 1");
-                display("Gamble", "You lost!<br /><br />Sorry buddy, but we're gonna have to take your <b>".$amount." Gold</b>.<br /><br />Care to <a href=\"index.php?do=gamble\">try again</a> or would you rather go back to <a href=\"index.php\">town</a>?");
+                display("You lost!<br /><br />Sorry buddy, but we're gonna have to take your <b>".$amount." Gold</b>.<br /><br />Care to <a href=\"index.php?do=gamble\">try again</a> or would you rather go back to <a href=\"index.php\">town</a>?");
             }
             
         }
@@ -386,7 +386,7 @@ function gamble() {
             
         }
 
-        display("Gamble", parsetemplate(gettemplate("town_gamble1"), $row));
+        display(parsetemplate(gettemplate("town_gamble1"), $row));
 
     }
 
@@ -408,7 +408,7 @@ function bank() {
         updateuserrow();
         $row["formatbank"] = number_format($userrow["bank"]);
         $row["formatgold"] = number_format($userrow["gold"]);
-        display("Deposit/Withdraw Gold at the Bank", parsetemplate(gettemplate("town_bank2"),$row));
+        display(parsetemplate(gettemplate("town_bank2"),$row));
         
     } elseif (isset($_POST["deposit"])) {
         
@@ -421,7 +421,7 @@ function bank() {
         updateuserrow();
         $row["formatbank"] = number_format($userrow["bank"]);
         $row["formatgold"] = number_format($userrow["gold"]);
-        display("Deposit/Withdraw Gold at the Bank", parsetemplate(gettemplate("town_bank2"),$row));
+        display(parsetemplate(gettemplate("town_bank2"),$row));
         
     } else {
         
@@ -430,7 +430,7 @@ function bank() {
         $row["maxpocket"] = $userrow["gold"];
         $row["maxbank"] = $userrow["bank"];
         
-        display("Deposit/Withdraw Gold at the Bank", parsetemplate(gettemplate("town_bank1"),$row));
+        display(parsetemplate(gettemplate("town_bank1"),$row));
         
     }
     
@@ -460,7 +460,7 @@ function halloffame() {
         $i++;
     }
     $row["halltable"] .= "<br />\n";
-    display("Hall of Fame", parsetemplate(gettemplate("town_halloffame"), $row));
+    display(parsetemplate(gettemplate("town_halloffame"), $row));
     
 }
 
@@ -485,7 +485,7 @@ function duel() {
     }
     
     $pagerow["list"] = $list;
-    display("Duel Challenge", parsetemplate(gettemplate("town_pvplist"),$pagerow));
+    display(parsetemplate(gettemplate("town_pvplist"),$pagerow));
     
 }
 
@@ -507,7 +507,7 @@ function duelchallenge() {
     // No errors, so create the PVP record and update everyone's userrow.
     $query = doquery("INSERT INTO <<pvp>> SET id='',player1id='".$userrow["id"]."',player2id='".$newuserrow["id"]."',player1name='".$userrow["charname"]."',player2name='".$newuserrow["charname"]."',playerturn='".$newuserrow["id"]."',turntime=NOW(),fightrow=''");
     $query2 = doquery("UPDATE <<users>> SET currentpvp='".getInsertId()."' WHERE id='".$newuserrow["id"]."' OR id='".$userrow["id"]."' LIMIT 2");
-    display("Duel Challenge",parsetemplate(gettemplate("pvp_challenge"),$newuserrow));
+    display(parsetemplate(gettemplate("pvp_challenge"),$newuserrow));
     
 }
     

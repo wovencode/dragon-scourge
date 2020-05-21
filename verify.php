@@ -26,6 +26,6 @@ if (mysqli_num_rows($query) != 1) {
 } else {
     $update = doquery("UPDATE <<accounts>> SET verifycode='1' WHERE verifycode='$code' LIMIT 1");
 }
-display("Account Verification",gettemplate("users_verified"), false);
+display(gettemplate("users_verified"), false);
 
 ?>

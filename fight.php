@@ -80,7 +80,7 @@ function dofight() {
             "monsterlightdamage"=>$fightrow["monsterlightdamage"],
             "track"=>$fightrow["track"]);
         $pagerow["spells"] = dospellslist();
-        display("Fighting",parsetemplate(gettemplate("fight_turn"),$pagerow));
+        display(parsetemplate(gettemplate("fight_turn"),$pagerow));
         
     } elseif (isset($_POST["spell"])) {
     
@@ -113,7 +113,7 @@ function dofight() {
             "monsterlightdamage"=>$fightrow["monsterlightdamage"],
             "track"=>$fightrow["track"]);
         $pagerow["spells"] = dospellslist();
-        display("Fighting",parsetemplate(gettemplate("fight_turn"),$pagerow));
+        display(parsetemplate(gettemplate("fight_turn"),$pagerow));
     
     } elseif (isset($_POST["run"])) {
         
@@ -134,7 +134,7 @@ function dofight() {
                 "monsterlightdamage"=>$fightrow["monsterlightdamage"],
                 "track"=>$fightrow["track"]);
             $pagerow["spells"] = dospellslist();
-            display("Fighting",parsetemplate(gettemplate("fight_monsteronly"),$pagerow));
+            display(parsetemplate(gettemplate("fight_monsteronly"),$pagerow));
             
         }
     
@@ -163,7 +163,7 @@ function dofight() {
                 "monsterlightdamage"=>$fightrow["monsterlightdamage"],
                 "track"=>$fightrow["track"]);
             $pagerow["spells"] = dospellslist();
-            display("Fighting",parsetemplate(gettemplate("fight_monsteronly"),$pagerow));
+            display(parsetemplate(gettemplate("fight_monsteronly"),$pagerow));
             
         }
     
@@ -172,7 +172,7 @@ function dofight() {
             "monsterhp"=>$userrow["currentmonsterhp"],
             "track"=>$fightrow["track"]);
         $pagerow["spells"] = dospellslist();
-        display("Fighting",parsetemplate(gettemplate("fight_new"),$pagerow));
+        display(parsetemplate(gettemplate("fight_new"),$pagerow));
         
     }
     
@@ -376,7 +376,7 @@ function youwin() {
         "monsterlightdamage"=>$fightrow["monsterlightdamage"],
         "newexp"=>$newexp,
         "newgold"=>$newgold);
-    display("Victory!",parsetemplate(gettemplate($template),$pagerow));
+    display(parsetemplate(gettemplate($template),$pagerow));
     
 }
 
@@ -422,7 +422,7 @@ function youlose() {
     // Update.
     updateuserrow();
     
-    display("Thou Art Dead.",parsetemplate(gettemplate("fight_lose"),$pagerow));
+    display(parsetemplate(gettemplate("fight_lose"),$pagerow));
 
 }
 

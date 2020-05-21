@@ -34,7 +34,7 @@ function donothing() {
     if ($pvp["accepted"] == 2) { 
         $query = doquery("UPDATE <<users>> SET currentpvp='0',currentaction='In Town' WHERE id='".$userrow["id"]."' LIMIT 1");
         $query = doquery("DELETE FROM <<pvp>> WHERE id='".$pvp["id"]."' LIMIT 1");
-        display("Duel Challenge", gettemplate("pvp_declined")); 
+        display(gettemplate("pvp_declined")); 
     }
     
     // Check if they're dead.
@@ -71,11 +71,11 @@ function challenged() {
         
         $query = doquery("UPDATE <<pvp>> SET accepted='2',playerturn=player1id WHERE id='".$userrow["currentpvp"]."' LIMIT 1");
         $query = doquery("UPDATE <<users>> SET currentaction='In Town', currentpvp='0' WHERE id='".$userrow["id"]."' LIMIT 1");
-        display("Duel Challenge",parsetemplate(gettemplate("pvp_decline"),$newuserrow));
+        display(parsetemplate(gettemplate("pvp_decline"),$newuserrow));
     
     } else {
     
-        display("Duel Challenge",parsetemplate(gettemplate("pvp_challenged"),$newuserrow));
+        display(parsetemplate(gettemplate("pvp_challenged"),$newuserrow));
         
     }
     
@@ -107,7 +107,7 @@ function dowait() {
         $pagerow["avatar"] = "<img src=\"images/users/nopicture.gif\" alt=\"".$monsterrow["charname"]."\" width=\"50\" height=\"50\" />";
     }
     
-    display("Duelling",parsetemplate(gettemplate("pvp_wait"),$pagerow));
+    display(parsetemplate(gettemplate("pvp_wait"),$pagerow));
     
 }
     
@@ -150,7 +150,7 @@ function dofight() {
             $pagerow["avatar"] = "<img src=\"images/users/nopicture.gif\" alt=\"".$monsterrow["charname"]."\" width=\"50\" height=\"50\" />";
         }
 
-        display("Duelling",parsetemplate(gettemplate("pvp_wait"),$pagerow));
+        display(parsetemplate(gettemplate("pvp_wait"),$pagerow));
         
     } elseif (isset($_POST["spell"])) {
     
@@ -186,7 +186,7 @@ function dofight() {
             $pagerow["avatar"] = "<img src=\"images/users/nopicture.gif\" alt=\"".$monsterrow["charname"]."\" width=\"50\" height=\"50\" />";
         }
         
-        display("Fighting",parsetemplate(gettemplate("pvp_wait"),$pagerow));
+        display(parsetemplate(gettemplate("pvp_wait"),$pagerow));
     
     }
     
@@ -215,7 +215,7 @@ function dofight() {
             $pagerow["avatar"] = "<img src=\"images/users/nopicture.gif\" alt=\"".$monsterrow["charname"]."\" width=\"50\" height=\"50\" />";
         }
         
-        display("Duelling",parsetemplate(gettemplate("pvp_turn"),$pagerow));
+        display(parsetemplate(gettemplate("pvp_turn"),$pagerow));
         
     } else {
     
@@ -230,7 +230,7 @@ function dofight() {
             $pagerow["avatar"] = "<img src=\"images/users/nopicture.gif\" alt=\"".$monsterrow["charname"]."\" width=\"50\" height=\"50\" />";
         }
         
-        display("Duelling",parsetemplate(gettemplate("pvp_new"),$pagerow));
+        display(parsetemplate(gettemplate("pvp_new"),$pagerow));
         
     }
     
@@ -345,7 +345,7 @@ function youwin() {
         $pagerow["avatar"] = "<img src=\"images/users/nopicture.gif\" alt=\"".$monsterrow["charname"]."\" width=\"50\" height=\"50\" />";
     }
         
-    display("Victory!",parsetemplate(gettemplate($template),$pagerow));
+    display(parsetemplate(gettemplate($template),$pagerow));
     
 }
 
@@ -395,7 +395,7 @@ function youlose() {
         $pagerow["avatar"] = "<img src=\"images/users/nopicture.gif\" alt=\"".$monsterrow["charname"]."\" width=\"50\" height=\"50\" />";
     }
     
-    display("Thou Art Dead.",parsetemplate(gettemplate("pvp_lose"),$pagerow));
+    display(parsetemplate(gettemplate("pvp_lose"),$pagerow));
 
 }
 

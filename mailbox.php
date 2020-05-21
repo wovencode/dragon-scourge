@@ -38,7 +38,7 @@ function mailbox() {
     }
 
     $row["messages"] .= "</table><br />\n";
-    display("Post Office", parsetemplate(gettemplate("mailbox_list"), $row));
+    display(parsetemplate(gettemplate("mailbox_list"), $row));
     
 }
 
@@ -58,7 +58,7 @@ function outbox() {
     }
 
     $row["messages"] .= "</table><br />\n";
-    display("Post Office", parsetemplate(gettemplate("mailbox_listout"), $row));
+    display(parsetemplate(gettemplate("mailbox_listout"), $row));
     
 }
 
@@ -93,7 +93,7 @@ function letter() {
     }
     
     $message["message"] = nl2br($message["message"]);
-    display("Post Office", parsetemplate(gettemplate("mailbox_letter"), $message));
+    display(parsetemplate(gettemplate("mailbox_letter"), $message));
     
 }
 
@@ -107,7 +107,7 @@ function letterout() {
     if ($message["senderid"] != $userrow["id"]) { err("Invalid action. Please <a href=\"index.php\">go back</a> and try again."); }
     
     $message["message"] = nl2br($message["message"]);
-    display("Post Office", parsetemplate(gettemplate("mailbox_letterout"), $message));
+    display(parsetemplate(gettemplate("mailbox_letterout"), $message));
     
 }
 
@@ -141,7 +141,7 @@ function mailnew() {
             
             // And send the message.
             $send = doquery("INSERT INTO <<messages>> SET id='', postdate=NOW(), senderid='".$userrow["id"]."', sendername='".$userrow["charname"]."', recipientid='".$checkuser["id"]."', recipientname='$recipient', status='0', title='$title', message='$message', gold='$gold'");
-            display("Post Office", gettemplate("mailbox_sent"));
+            display(gettemplate("mailbox_sent"));
             
         } else {
         
@@ -152,7 +152,7 @@ function mailnew() {
 
     }
     
-    display("Post Office", gettemplate("mailbox_new"));
+    display(gettemplate("mailbox_new"));
 
 }
 
@@ -190,7 +190,7 @@ function mailreply() {
             
             // And send the message.
             $send = doquery("INSERT INTO <<messages>> SET id='', postdate=NOW(), senderid='".$userrow["id"]."', sendername='".$userrow["charname"]."', recipientid='".$origmessage["senderid"]."', recipientname='".$origmessage["sendername"]."', status='0', title='$title', message='$message', gold='$gold'");
-            display("Post Office", gettemplate("mailbox_sent"));
+            display(gettemplate("mailbox_sent"));
             
         } else {
         
@@ -204,7 +204,7 @@ function mailreply() {
     
     
     $origmessage["message"] = nl2br($origmessage["message"]);
-    display("Post Office", parsetemplate(gettemplate("mailbox_reply"), $origmessage));
+    display(parsetemplate(gettemplate("mailbox_reply"), $origmessage));
     
 }
 

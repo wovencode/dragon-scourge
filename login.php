@@ -51,7 +51,7 @@ function login() {
         
     } else {
         
-        display("Log In", gettemplate("login"), false);
+        display(gettemplate("login"), false);
         
     }
     

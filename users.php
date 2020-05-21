@@ -104,13 +104,13 @@ function register() {
             
         }
         
-        display("Register", $page, false);
+        display($page, false);
         
     }
 
     $row["imageformat"] = "<option value=\".png\">PNG</option><option value=\".gif\">GIF</option>";
     $row["minimap"] = "<option value=\"1\">Yes</option><option value=\"0\">No</option>";
-    display("Register", parsetemplate(gettemplate("users_register1"), $row), false);
+    display(parsetemplate(gettemplate("users_register1"), $row), false);
     
 }
 
@@ -202,7 +202,7 @@ function profile() {
     $class = dorow(doquery("SELECT * FROM <<classes>> WHERE id='".$newuserrow["charclass"]."' LIMIT 1"));
     $newuserrow["charclass"] = $class["name"];
 
-    display("Extended Profile",parsetemplate(gettemplate($template),$newuserrow));
+    display(parsetemplate(gettemplate($template),$newuserrow));
     
 }
 
@@ -242,10 +242,10 @@ function settings() {
                 setcookie("scourge", "", (time()-3600), "/", "", 0);
                 $page = "Your information was updated successfully. Because you changed your password, you have been logged out to avoid cookie errors.<br /><br />Please use the Log In link above to log back into the game and continue playing.";
                 unset($GLOBALS["acctrow"]);
-                display("Account Settings", $page, false);
+                display($page, false);
             } else {
                 $page = "Your information was updated successfully. You may now continue <a href=\"index.php\">playing</a>.";
-                display("Account Settings", $page);
+                display($page);
             }
             
         } else {
@@ -268,7 +268,7 @@ function settings() {
     } else {
         $row["minimap"] = "<option value=\"1\">Yes</option><option value=\"0\">No</option>";
     }
-    display("Account Settings", parsetemplate(gettemplate("users_settings"), $row));
+    display(parsetemplate(gettemplate("users_settings"), $row));
     
 }
 
@@ -329,11 +329,11 @@ function characters() {
                 
             }
             
-        display("Characters", parsetemplate(gettemplate("users_charlist"), $row));
+        display(parsetemplate(gettemplate("users_charlist"), $row));
         
     } else {
     
-        display("Characters", gettemplate("users_charlistnew"));
+        display(gettemplate("users_charlistnew"));
     
     }
 
@@ -446,7 +446,7 @@ function charnew() {
     if ($acctrow["characters"] == 0) { $row["defaultenabled"] = "disabled=\"disabled\""; } else { $row["defaultenabled"] = ""; }
     $row["maxsize"] = round($controlrow["avatarmaxsize"] / 1000, 1);
     
-    display("Characters", parsetemplate(gettemplate("users_charnew"), $row), false);
+    display(parsetemplate(gettemplate("users_charnew"), $row), false);
     
 }
 
@@ -497,7 +497,7 @@ function charedit() {
     } elseif (isset($_POST["delete"])) {
         
         if ($acctrow["characters"] == 1) { err("You only have one character on your account. If you wish to delete this character, please make a new one first before trying to delete this one."); }
-        display("Characters", parsetemplate(gettemplate("users_chardelete"), $newuserrow));
+        display(parsetemplate(gettemplate("users_chardelete"), $newuserrow));
     
     } elseif (isset($_POST["ultrakill"])) {
         
@@ -516,7 +516,7 @@ function charedit() {
     }
     
     $newuserrow["maxsize"] = round($controlrow["avatarmaxsize"] / 1000, 1);
-    display("Characters", parsetemplate(gettemplate("users_charedit"), $newuserrow));
+    display(parsetemplate(gettemplate("users_charedit"), $newuserrow));
     
 }
 
@@ -578,7 +578,7 @@ function levelup() {
         
         // Finish.
         updateuserrow();
-        display("Level Points", parsetemplate(gettemplate("users_levelup2"), $userrow));
+        display(parsetemplate(gettemplate("users_levelup2"), $userrow));
         
     } else {
         
@@ -593,7 +593,7 @@ function levelup() {
         $row["mpperenergy"] = $classrow["mpperenergy"];
         $row["levelup"] = $userrow["levelup"];
         
-        display("Level Points", parsetemplate(gettemplate("users_levelup1"), $row));
+        display(parsetemplate(gettemplate("users_levelup1"), $row));
     
     }
     
@@ -631,7 +631,7 @@ function levelspell() {
         
         // Finish.
         updateuserrow();
-        display("Spell Points", parsetemplate(gettemplate("users_levelspell2"), $userrow));
+        display(parsetemplate(gettemplate("users_levelspell2"), $userrow));
         
     } else {
         
@@ -659,7 +659,7 @@ function levelspell() {
         
         $row["levelspell"] = $userrow["levelspell"];
         
-        display("Spell Points", parsetemplate(gettemplate("users_levelspell1"), $row));
+        display(parsetemplate(gettemplate("users_levelspell1"), $row));
     
     }
     

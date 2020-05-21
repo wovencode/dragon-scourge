@@ -66,7 +66,7 @@ function mymail($to, $title, $body, $from = '') { // thanks to arto dot PLEASE d
 function err($error, $system = false, $panels = true) { // Basic little error handler.
 
      $errmsg = "One or more errors have occurred:<br /><br /><b>$error</b><br /><br />Please <a href=\"javascript:history.go(-1);\">go back</a> and try again.";
-     display("Error", $errmsg, $panels);
+     display($errmsg, $panels);
      
 }
 
