@@ -16,7 +16,7 @@
 
 // Config.php.
 include("config.php");
-if (trim($dbsettings["secretword"]) == "") { die("Invalid setting for secretword in config.php. This setting must never be blank."); }
+if (trim(COOKIE_SALT) == "") { die("Invalid setting for secretword in config.php. This setting must never be blank."); }
 
 // Control row.
 $controlrow = dorow(doquery("SELECT * FROM <<control>> WHERE id='1' LIMIT 1"));
