@@ -47,6 +47,7 @@ function login() {
         $newcookie = $row["id"] . " " . $username . " " . md5($row["password"] . "--" . COOKIE_SALT);
         if (isset($remember)) { $expiretime = time()+31536000; $newcookie .= " 1"; } else { $expiretime = 0; $newcookie .= " 0"; }
         setcookie($controlrow["cookiename"], $newcookie, $expiretime, "/", $controlrow["cookiedomain"], 0);
+        
         die(header("Location: index.php"));
         
     } else {

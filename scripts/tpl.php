@@ -41,7 +41,7 @@ function display($content, $panels = true) {
         $controlrow = dorow(doquery("SELECT * FROM <<control>> WHERE id='1' LIMIT 1"));
     }
 
-    $page .= gettemplate("primary");
+    $page = gettemplate("primary");
     
     // Setup for primary page array indexes.
     $row = array();
