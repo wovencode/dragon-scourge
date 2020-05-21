@@ -16,21 +16,6 @@
 
 opendb();
 
-// Handling for servers with magic_quotes turned on.
-if (get_magic_quotes_gpc()) {
-
-   $_POST = array_map('uber_ss', $_POST);
-   $_GET = array_map('uber_ss', $_GET);
-   $_COOKIE = array_map('uber_ss', $_COOKIE);
-
-}
-$_POST = array_map('uber_mres', $_POST);
-$_POST = array_map('uber_hsc', $_POST);
-$_GET = array_map('uber_mres', $_GET);
-$_GET = array_map('uber_hsc', $_GET);
-$_COOKIE = array_map('uber_mres', $_COOKIE);
-$_COOKIE = array_map('uber_hsc', $_COOKIE);
-
 $page = "one";
 if (isset($_GET["page"])) { $page = $_GET["page"]; }
 switch ($page) {
@@ -42,32 +27,6 @@ switch ($page) {
     default: one(); break;
 }
 
-function uber_ss($value) {
-    
-   $value = is_array($value) ?
-               array_map('uber_ss', $value) :
-               stripslashes($value);
-   return $value;
-   
-}
-
-function uber_mres($value) {
-    
-   $value = is_array($value) ?
-               array_map('uber_mres', $value) :
-               mysql_real_escape_string($value);
-   return $value;
-   
-}
-
-function uber_hsc($value) {
-    
-   $value = is_array($value) ?
-               array_map('uber_hsc', $value) :
-               htmlspecialchars($value);
-   return $value;
-   
-}
 
 function opendb() { // Open database connection.
 
