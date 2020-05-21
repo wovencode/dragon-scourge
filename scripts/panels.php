@@ -17,6 +17,7 @@
 function panelleft() {
     
     global $controlrow, $userrow, $acctrow, $townrow, $worldrow;
+    
     $row = array();
     
     // Action handling.
@@ -102,8 +103,9 @@ function panelright() {
     // Who's Online.
     if ($controlrow["showonline"] == 1) {
         $row["whosonline"] = "<div class=\"big\"><b>Who's Online</b></div>";
-        $users = dorow(doquery("SELECT * FROM <<users>> WHERE UNIX_TIMESTAMP(onlinetime) >= '".(time()-600)."'"), "id");
-        $number = count($users);
+        #$result = dorow(doquery("SELECT * FROM <<users>> WHERE UNIX_TIMESTAMP(onlinetime) >= '".(time()-600)."'"), "id");
+        $users = doquery("SELECT * FROM <<users>> WHERE UNIX_TIMESTAMP(onlinetime) >= '".(time()-600)."'");
+        $number = mysqli_num_rows($users);
         $row["whosonline"] .= "There are <b>$number</b> user(s) online within the last 10 minutes: ";
         foreach ($users as $a => $b) {
             if ($b["guild"] != 0) { 
