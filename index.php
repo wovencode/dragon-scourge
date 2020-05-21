@@ -14,12 +14,12 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-error_reporting(E_ALL);
-
 include_once("core.php");
 
 if(isset($_GET["do"])) {
+
     $do = explode(":",$_GET["do"]);
+    
     switch ($do[0]) {
         
         // Exploring.
@@ -74,27 +74,37 @@ if(isset($_GET["do"])) {
 function donothing() {
     
     global $userrow;
-    if ($userrow["story"] != "0" && $userrow["storylat"] == $userrow["latitude"] && $userrow["storylon"] == $userrow["longitude"]) {
-        die(header("Location: story.php"));
-    }
-    if ($userrow["currentpvp"] != 0) { 
-        die(header("Location: pvp.php"));
-    }
-    if ($userrow["currentaction"] == "In Town") {
-        include("town.php");
-        dotown();
-    }
-    if ($userrow["currentaction"] == "Exploring") {
-        include("explore.php");
-        doexplore();
-    }
-    if ($userrow["currentaction"] == "Fighting") {
-        die(header("Location: fight.php"));
-    }
-    if ($userrow["currentaction"] == "PVP") { 
-        die(header("Location: pvp.php"));
-    }
     
+    if (!empty($userrow))
+    {
+    
+		if ($userrow["story"] != "0" && $userrow["storylat"] == $userrow["latitude"] && $userrow["storylon"] == $userrow["longitude"]) {
+			die(header("Location: story.php"));
+		}
+		if ($userrow["currentpvp"] != 0) { 
+			die(header("Location: pvp.php"));
+		}
+		if ($userrow["currentaction"] == "In Town") {
+			include("town.php");
+			dotown();
+		}
+		if ($userrow["currentaction"] == "Exploring") {
+			include("explore.php");
+			doexplore();
+		}
+		if ($userrow["currentaction"] == "Fighting") {
+			die(header("Location: fight.php"));
+		}
+		if ($userrow["currentaction"] == "PVP") { 
+			die(header("Location: pvp.php"));
+		}
+    
+    }
+    else
+    {
+    	die(header("Location: users.php?do=register"));
+    }
+
 }
 
 ?>
