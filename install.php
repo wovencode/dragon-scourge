@@ -14,7 +14,7 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-opendb();
+include_once("core.php");
 
 $page = "one";
 if (isset($_GET["page"])) { $page = $_GET["page"]; }
@@ -27,24 +27,6 @@ switch ($page) {
     default: one(); break;
 }
 
-
-
-// Thanks to Predrag Supurovic from php.net for this function!
-function dobatch($p_query) {
-    $query_split = preg_split ("/[;]+/", $p_query);
-    foreach ($query_split as $command_line) {
-        $command_line = trim($command_line);
-        if ($command_line != '') {
-            $query_result = doquery($command_line);
-            if ($query_result == 0) {
-                break;
-            }
-        }
-    }
-    return $query_result;
-}
-
-/***** DONE WITH ALL THE SETUP STUFF, SO ACTUALLY START INSTALLING. *****/
 
 function one() {
     
