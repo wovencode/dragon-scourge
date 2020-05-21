@@ -16,7 +16,7 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-function gettemplate($templatename) { // SQL query for the template.
+function gettemplate($templatename) {
     
     $filename = "templates/" . $templatename . ".php";
     include("$filename");
@@ -24,7 +24,7 @@ function gettemplate($templatename) { // SQL query for the template.
     
 }
 
-function parsetemplate($template, $array) { // Replace template with proper content. Also does languages.
+function parsetemplate($template, $array) {
     
     foreach($array as $a => $b) {
         $template = str_replace("{{{$a}}}", $b, $template);
@@ -33,9 +33,8 @@ function parsetemplate($template, $array) { // Replace template with proper cont
     
 }
 
-function display($title, $content, $panels = true) { // Finalize page and output to browser.
+function display($content, $panels = true) {
     
-    #include('config.php');
     global $controlrow, $userrow, $worldrow, $starttime;
     
     if (!isset($controlrow)) {
@@ -46,10 +45,10 @@ function display($title, $content, $panels = true) { // Finalize page and output
     
     // Setup for primary page array indexes.
     $row = array();
-    $row["gamename"] = $controlrow["gamename"];
-    $row["pagetitle"] = $title;
-    $row["background"] = "background" . $userrow["world"];
-    $row["content"] = $content;
+    $row["gamename"] 	= $controlrow["gamename"];
+    $row["pagetitle"] 	= $controlrow["gamename"];
+    $row["background"] 	= "background" . $userrow["world"];
+    $row["content"] 	= $content;
    
     if ($controlrow["forumurl"] != "") { $row["forumslink"] = "<a href=\"".$controlrow["forumurl"]."\">Support Forums</a>"; } else { $row["forumslink"] = ""; }
     
