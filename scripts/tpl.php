@@ -16,13 +16,6 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
-
-//if (file_exists("install.php")) { die("Please remove the <b>install.php</b> and <b>install.sql</b> files from your game directory before continuing."); }
-//if (file_exists("install.sql")) { die("Please remove the install.php file from your game directory before continuing."); }
-
-// Setup for superglobal stuff that can't go in globals.php.
-
-
 function gettemplate($templatename) { // SQL query for the template.
     
     $filename = "templates/" . $templatename . ".php";
@@ -49,10 +42,6 @@ function display($title, $content, $panels = true) { // Finalize page and output
         $controlrow = dorow(doquery("SELECT * FROM <<control>> WHERE id='1' LIMIT 1"));
     }
 
-    // Make page tags for XHTML validation.
-    $page = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n"
-    . "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"DTD/xhtml1-transitional.dtd\">\n"
-    . "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"en\" lang=\"en\">\n";
     $page .= gettemplate("primary");
     
     // Setup for primary page array indexes.
