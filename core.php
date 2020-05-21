@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL);
+
 include_once("config/config.php");
 
 include_once("scripts/db.php");
