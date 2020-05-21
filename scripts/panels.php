@@ -126,24 +126,24 @@ function panelright() {
 function paneltop($loggedin = true) {
     
     global $acctrow, $userrow;
-    if ($loggedin == true || isset($acctrow)) {
+    
+    if ($loggedin == true) {
         
         if ($userrow == false) { $userrow["charname"] = "No Characters Yet"; $userrow["guild"] = 0; }
-        //if ($acctrow["authlevel"] == 255) { $admin = " (<a href=\"admin/index.php\">Admin</a>)"; } else { $admin = ""; }
-        $admin = "";
+       
         if ($userrow["guild"] != 0) { 
             $charname = "[<span style=\"color: ".$userrow["tagcolor"].";\">".$userrow["guildtag"]."</span>]<span style=\"color: ".$userrow["namecolor"].";\">".$userrow["charname"]."</span>";
         } else { 
             $charname = $userrow["charname"];
         }
-        $top = "<div class=\"big\">\n<center><b>$charname</b>$admin<br />\n";
+        $top = "<div class=\"big\">\n<center><b>$charname</b><br />\n";
         $top .= "[ <a href=\"login.php?do=logout\">Log Out</a> | <a href=\"users.php?do=settings\">Account</a> | <a href=\"users.php?do=characters\">Characters</a> ]\n";
         $top .= "</center></div>\n";
         
     } else {
         
         $top = "<div class=\"big\">\n<center><b>Not Logged In</b><br />\n";
-        $top .= "[ <a href=\"login.php?do=login\">Log In</a> | <a href=\"users.php?do=register\">Register</a> | <a href=\"help.php\">Help</a> ]\n";
+        $top .= "[ <a href=\"login.php?do=login\">Log In</a> | <a href=\"users.php?do=register\">Register</a> ]\n";
         $top .= "</center></div>\n";
         
     }
