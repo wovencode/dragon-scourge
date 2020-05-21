@@ -1,6 +1,14 @@
 # Dragon Scourge
+- Original author: Jamin Blount (aka renderse7en)
+- The sequel of the famous old-school browser-game Dragon Knight
+- See also: [Dragon Scourge](https://github.com/renderse7en/dragon-scourge)
 - See also: [Dragon Knight](https://github.com/renderse7en/dragon-knight)
-- [Live Demo](http://www.dragonscourge.com/play)
+
+# Dragon Scourge Revival by Fhiz
+- *Fhiz* started to work on a total refactor of the old codebase in 2020
+- The plan is to update the code in order to be functional on PHP7, then refactor the codebase, make it fully responsive & mobile capable and finally polish it.
+
+# Jamin's Original comment
 
 Many years ago, when I was young and dumb, I wrote a [simple little game](https://github.com/renderse7en/dragon-knight) based on the game *Dragon Warrior* for the NES. It was fun, it helped me learn how to code, and a lot of people liked it.
 
