@@ -52,7 +52,7 @@ function register() {
         // Process username.
         if (trim($username) == "") { $errors++; $errorlist .= "Username field is required.<br />"; }
         if (preg_match("/[^A-z0-9_\-]/", $username)==1) { $errors++; $errorlist .= "Username must be alphanumeric.<br />"; } // Thanks to "Carlos Pires" from php.net!
-        $usernamequery = doquery("SELECT username FROM <<accounts>> WHERE username='$username' LIMIT 1");
+        $usernamequery = doquery("SELECT username FROM <<accounts>> WHERE LOWER(username) = '".strtolower($username)."' LIMIT 1");
         if (mysqli_num_rows($usernamequery) > 0) { $errors++; $errorlist .= "Username already taken - unique username required.<br />"; }
 
         // Process password.
@@ -354,7 +354,7 @@ function charnew() {
         // Process charname.
         if (trim($charname) == "") { $errors++; $errorlist .= "Character Name field is required.<br />"; }
         if (preg_match("/[^A-z\ 0-9_\-]/", $charname)==1) { $errors++; $errorlist .= "Character names can only contain letters, numbers, spaces and hyphens.<br />"; } // Thanks to "Carlos Pires" from php.net!
-        $characternamequery = doquery("SELECT charname FROM <<users>> WHERE charname='$charname' LIMIT 1");
+        $characternamequery = doquery("SELECT charname FROM <<users>> WHERE LOWER(charname) = '".strtolower($charname) . "' LIMIT 1");
         if (mysqli_num_rows($characternamequery) > 0) { $errors++; $errorlist .= "Character Name already taken - unique Character Name required.<br />"; }
         
 	    // Upload new charpicture, if required.
