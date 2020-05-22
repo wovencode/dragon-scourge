@@ -68,7 +68,6 @@ CREATE TABLE `<<control>>` (
   `verifyemail` tinyint(3) unsigned NOT NULL default '0',
   `debug` tinyint(3) unsigned NOT NULL default '0',
   `botcheck` int(10) unsigned NOT NULL default '0',
-  `moddedby` text NOT NULL,
   `pvprefresh` int(10) unsigned NOT NULL default '0',
   `pvptimeout` int(10) unsigned NOT NULL default '0',
   `guildstartup` int(10) unsigned NOT NULL default '100000',
