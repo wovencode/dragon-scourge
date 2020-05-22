@@ -16,6 +16,9 @@
 //	within the confines of the Dragon Scourge License Agreement
 //	(see our website for that).
 
+// ---------------------------------------------------------------------------------------
+// 
+// ---------------------------------------------------------------------------------------
 function gettemplate($templatename) {
     
     $filename = "templates/" . $templatename . ".php";
@@ -24,6 +27,9 @@ function gettemplate($templatename) {
     
 }
 
+// ---------------------------------------------------------------------------------------
+// 
+// ---------------------------------------------------------------------------------------
 function parsetemplate($template, $array) {
     
     foreach($array as $a => $b) {
@@ -33,6 +39,9 @@ function parsetemplate($template, $array) {
     
 }
 
+// ---------------------------------------------------------------------------------------
+// 
+// ---------------------------------------------------------------------------------------
 function display($content, $panels = true) {
     
     global $controlrow, $userrow, $worldrow, $starttime;

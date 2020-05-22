@@ -23,6 +23,9 @@ if ($story["targetmonster"] != "0") { storymonster(); }
 if ($story["targetitem"] != "") { storyitem(); }
 storyteleport();
 
+// ---------------------------------------------------------------------------------------
+// storyteleport
+// ---------------------------------------------------------------------------------------
 function storyteleport() { // Sends to a new location, or just displays a chunk of the story with no associated action.
     
     global $userrow, $story;
@@ -71,9 +74,13 @@ function storyteleport() { // Sends to a new location, or just displays a chunk 
     }
         
     $story["story"] = nl2br($story["story"]);
-    display(parsetemplate(gettemplate("story_teleport"), $story));
+    display(parsetemplate(gettemplate("story_teleport"), $story), false);
 
 }
+
+// ---------------------------------------------------------------------------------------
+// 
+// ---------------------------------------------------------------------------------------
 
 function storymonster() {
     
