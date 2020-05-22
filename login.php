@@ -33,15 +33,28 @@ function login() {
     if (isset($_POST["submit"])) {
         
         // Setup.
-        #include("config.php");
         extract($_POST);
         $query = doquery("SELECT * FROM <<accounts>> WHERE username='$username' LIMIT 1");
         $row = dorow($query);
         
         // Errors.
-        if ($row == false) { err("Invalid username. Please <a href=\"index.php\">go back</a> and try again.", false, false); }
-        if ($row["password"] != md5($password)) { err("Invalid password. Please <a href=\"index.php\">go back</a> and try again.", false, false); }
-        if ($row["verifycode"] != 1) { err("You have not yet verified your account. Please click the link found in your Account Verification email before continuing. If you never received the email, please check your spam filter settings or contact the game administrator for further assistance.", false, false); }
+        if ($row == false) {
+        	err("Invalid username. Please <a href=\"index.php\">go back</a> and try again.", false, false);
+        	clearcookie($controlrow["cookiename"]);
+        	return;
+        }
+        
+        if ($row["password"] != md5($password)) {
+        	err("Invalid password. Please <a href=\"index.php\">go back</a> and try again.", false, false);
+        	clearcookie($controlrow["cookiename"]);
+        	return;
+        }
+        
+        if ($row["verifycode"] != 1) {
+        	err("You have not yet verified your account. Please click the link found in your Account Verification email before continuing. If you never received the email, please check your spam filter settings or contact the game administrator for further assistance.", false, false);
+        	clearcookie($controlrow["cookiename"]);
+        	return;
+        }
         
         // Finish.
         $newcookie = $row["id"] . " " . $username . " " . md5($row["password"] . "--" . COOKIE_SALT);
@@ -60,10 +73,11 @@ function login() {
 
 function logout() {
     
-    #include("globals.php");
-    setcookie($controlrow["cookiename"], "", (time()-3600), "/", $controlrow["cookiedomain"], 0);
+    clearcookie($controlrow["cookiename"]);
     die(header("Location: login.php?do=login"));
     
 }
+
+
 
 ?>
