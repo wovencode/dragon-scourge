@@ -2,6 +2,8 @@
 
 error_reporting(E_ALL);
 
+date_default_timezone_set('UTC');
+
 include_once("config/config.php");
 
 include_once("scripts/db.php");
