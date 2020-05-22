@@ -27,22 +27,31 @@ $acctrow = checkcookies();
 if ($acctrow != false && $acctrow["characters"] == 0 && strpos($_SERVER["REQUEST_URI"], "?do=charnew") === false) {
 	die(header("Location: users.php?do=charnew"));
 }
+else if ($acctrow == false)
+{
+	return;
+}
 
 // ---------------------------------------------------------------------------------------
-// User row.
+// User row (if Account is available).
 // ---------------------------------------------------------------------------------------
 
 if (strpos($_SERVER["REQUEST_URI"], "?do=logout") == true) {
-    $online = doquery("UPDATE <<users>> SET onlinetime=NOW() WHERE id='".$acctrow["activechar"]."' LIMIT 1");
+	$online = doquery("UPDATE <<users>> SET onlinetime=NOW() WHERE id='".$acctrow["activechar"]."' LIMIT 1");
 } else {
-    $online = doquery("UPDATE <<users>> SET onlinetime = DATE_SUB(onlinetime, INTERVAL 11 MINUTE) WHERE id='".$acctrow["activechar"]."' LIMIT 1");
+	$online = doquery("UPDATE <<users>> SET onlinetime = DATE_SUB(onlinetime, INTERVAL 11 MINUTE) WHERE id='".$acctrow["activechar"]."' LIMIT 1");
 }
+
 
 $userrow = dorow(doquery("SELECT * FROM <<users>> WHERE id='".$acctrow["activechar"]."' LIMIT 1"));
 
 if ($userrow != false)
 {
 	$userrow = array_map("stripslashes", $userrow);
+}
+else
+{
+	return;
 }
 
 // ---------------------------------------------------------------------------------------
