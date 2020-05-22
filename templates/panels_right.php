@@ -15,7 +15,7 @@
 //	(see our website for that).
 
 $template = <<<END
-{{babblebox}}
+{{chatbox}}
 {{whosonline}}
 END;
 

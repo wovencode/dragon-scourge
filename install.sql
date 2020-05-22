@@ -16,8 +16,8 @@ CREATE TABLE `<<accounts>>` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM ;
 
-DROP TABLE IF EXISTS `<<babblebox>>`;
-CREATE TABLE `<<babblebox>>` (
+DROP TABLE IF EXISTS `<<chatbox>>`;
+CREATE TABLE `<<chatbox>>` (
   `id` int(11) unsigned NOT NULL auto_increment,
   `posttime` datetime NOT NULL default '0000-00-00 00:00:00',
   `charname` varchar(30) NOT NULL default '',

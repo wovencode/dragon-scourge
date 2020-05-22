@@ -17,7 +17,7 @@
 $template = <<<END
 <head>
 <meta http-equiv="refresh" content="45">
-<title>Babblebox</title>
+<title>chatbox</title>
 <style type="text/css">
 body { font: 10px Verdana; background-color: white; padding: 0px; margin: 0px; }
 table { font: 10px Verdana; }
@@ -31,15 +31,15 @@ a:hover { color: #663300; }
 .red { color: #ff0000; }
 .blue { color: #0000ff; }
 .big { font: 11px Verdana; background-color: #dddddd; border: solid 1px #aaaaaa; padding: 2px; margin-bottom: 3px; }
-.babble1 { background-color: #eeeeee; font: 10px Verdana; margin: 0px; padding: 2px; }
-.babble2 { background-color: #ffffff; font: 10px Verdana; margin: 0px; padding: 2px; }
+.chat1 { background-color: #eeeeee; font: 10px Verdana; margin: 0px; padding: 2px; }
+.chat2 { background-color: #ffffff; font: 10px Verdana; margin: 0px; padding: 2px; }
 </style>
 </head>
 <body onload="window.scrollTo(0,99999)">
 {{shouts}}
-<div class="babble1">
-<form action="index.php?do=babblebox{{guild}}" method="post">
-<input type="text" name="babble" size="15" maxlength="100" /> <input type="submit" name="submit" value="Babble!" />
+<div class="chat1">
+<form action="index.php?do=chatbox{{guild}}" method="post">
+<input type="text" name="chat" size="15" maxlength="100" /> <input type="submit" name="submit" value="chat!" />
 </form>
 </div>
 </body>

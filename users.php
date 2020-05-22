@@ -43,7 +43,7 @@ function donothing() {
 
 function register() {
     
-    if(isset($_POST["submit"])) {
+    if (isset($_POST["submit"])) {
         
         extract($_POST);
         global $controlrow;

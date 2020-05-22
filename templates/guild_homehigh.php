@@ -11,7 +11,7 @@ $template = <<<END
 </div>
 </td>
 <td>
-{{babblebox}}
+{{chatbox}}
 </td>
 </tr><tr>
 <td>

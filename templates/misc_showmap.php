@@ -30,8 +30,8 @@ a:hover { color: #663300; }
 .red { color: #ff0000; }
 .blue { color: #0000ff; }
 .big { font: 11px Verdana; background-color: #dddddd; border: solid 1px #aaaaaa; padding: 2px; margin-bottom: 3px; }
-.babble1 { background-color: #eeeeee; font: 10px Verdana; margin: 0px; padding: 2px; }
-.babble2 { background-color: #ffffff; font: 10px Verdana; margin: 0px; padding: 2px; }
+.chat1 { background-color: #eeeeee; font: 10px Verdana; margin: 0px; padding: 2px; }
+.chat2 { background-color: #ffffff; font: 10px Verdana; margin: 0px; padding: 2px; }
 </style>
 </head>
 <body><center>

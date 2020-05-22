@@ -91,13 +91,13 @@ THEVERYENDOFYOU;
 function panelright() {
     
     global $controlrow;
-    $row["babblebox"] = "";
+    $row["chatbox"] = "";
     $row["whosonline"] = "";
     
-    // Babblebox.
+    // chatbox.
     if ($controlrow["showshout"] == 1) {
-        $row["babblebox"] = "<div class=\"big\"><b>Babblebox</b></div>";
-        $row["babblebox"] .= "<iframe src=\"index.php?do=babblebox\" name=\"sbox\" width=\"100%\" height=\"200\" frameborder=\"0\" id=\"bbox\">Your browser does not support inline frames! The Babble Box will not be available until you upgrade to a newer <a href=\"http://www.mozilla.org\" target=\"_new\">browser</a>.</iframe><br /><br />";
+        $row["chatbox"] = "<div class=\"big\"><b>chatbox</b></div>";
+        $row["chatbox"] .= "<iframe src=\"index.php?do=chatbox\" name=\"sbox\" width=\"100%\" height=\"200\" frameborder=\"0\" id=\"bbox\">Your browser does not support inline frames! The chat Box will not be available until you upgrade to a newer <a href=\"http://www.mozilla.org\" target=\"_new\">browser</a>.</iframe><br /><br />";
     }
     
     // Who's Online.
