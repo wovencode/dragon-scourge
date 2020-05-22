@@ -25,10 +25,14 @@ As with Dragon Knight before it, please keep some things in mind:
 - Have fun with this. I gave it a lot of love a long time ago. I hope it inspires you to give something a lot of love as well.
 - This Git repo represents the final released version, Beta 5 Build 20, originally released 9/2/2007.
 
-# System Requirements
+# System Requirements (OLD)
 - PHP (4.1 and higher)
 - MySQL
 - zlib compression enabled on your server (optional)
+
+# System Requirements (NEW)
+- PHP (7 and higher)
+- MySQL
 
 # Installation Instructions
 1. Clone this repo or download the zip.
@@ -37,7 +41,8 @@ As with Dragon Knight before it, please keep some things in mind:
 3. Edit `config.php` to include the correct values for your database setup.
 4. Upload the contents of the Dragon Scourge folder to your site.
 5. Using a MySQL client such as HeidiSQL or PHPMyAdmin, run the contents of `install.sql` on the database you created.
-7. Enjoy the game.
+7. Run the installation process by opening this page: `WWW.YOURDOMAIN.COM/install.php`
+8. Enjoy the game.
 
 # License
 MIT License
