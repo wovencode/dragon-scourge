@@ -47,7 +47,9 @@ function display($content, $panels = true) {
     $row = array();
     $row["gamename"] 	= $controlrow["gamename"];
     $row["pagetitle"] 	= $controlrow["gamename"];
-    $row["background"] 	= "background" . $userrow["world"];
+    $row["background"] 	= "background";
+    if (isset($userrow["world"]))
+    	$row["background"] 	.= $userrow["world"];
     $row["content"] 	= $content;
    
     if ($controlrow["forumurl"] != "") { $row["forumslink"] = "<a href=\"".$controlrow["forumurl"]."\">Support Forums</a>"; } else { $row["forumslink"] = ""; }
