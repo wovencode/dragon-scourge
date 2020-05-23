@@ -63,7 +63,6 @@ if(isset($_GET["do"])) {
         case "guildupdate": include("guilds.php"); guildupdate(); break;
         // Misc.
         case "chatbox": chatbox(); break;
-        case "showmap": showmap(); break;
         default: donothing();
         
     }

@@ -51,8 +51,11 @@ function panelleft() {
         $row["minimap"] = "<a href=\"javascript:void(0)\" onClick=\"Javascript:window.open('index.php?do=showmap','','width=550,height=550,toolbar=no, location=no,directories=no,status=yes,menubar=no,scrollbars=no,copyhistory=yes, resizable=yes');\">View Map</a><br /><br />";
         
     } else {
-        
-$row["minimap"] = <<<THEVERYENDOFYOU
+    
+    $row["minimap"] = draw_map(100);
+    
+    /*
+	$row["minimap"] = <<<THEVERYENDOFYOU
 <div style="border: solid 1px black; width: 106px; height: 106px; padding: 0px; margin: 0px 0px 5px 0px;">
 <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0" width="106" height="106" id="mapmini" align="middle">
 <param name="allowScriptAccess" value="sameDomain" />
@@ -60,7 +63,7 @@ $row["minimap"] = <<<THEVERYENDOFYOU
 </object>
 </div>
 THEVERYENDOFYOU;
-    
+    */
     }
     
     // Travel To handling.

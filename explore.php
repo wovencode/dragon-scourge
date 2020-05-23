@@ -18,7 +18,10 @@ include_once("core.php");
 
 function doexplore() { // Default explore screen.
     
-    display(gettemplate("explore"));
+    $map = array();
+    $map["map"] = draw_map();
+    
+    display(parsetemplate(gettemplate("explore"), $map));
     
 }
 
@@ -86,7 +89,12 @@ function move() { // Primary exploring function. Move them with the compass butt
     // If we've gotten this far, nothing has happened.
     $userrow["currentaction"] = "Exploring";
     doquery("UPDATE <<users>> SET currentaction='Exploring', dropidstring='0' $string WHERE id='".$userrow["id"]."' LIMIT 1");
-    display(gettemplate("explore"));
+    
+    $map = array();
+    $map["map"] = draw_map();
+    
+    display(parsetemplate(gettemplate("explore"), $map));
+    
     
 }
 
