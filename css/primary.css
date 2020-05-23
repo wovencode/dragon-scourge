@@ -56,14 +56,14 @@ a:hover {
     margin-bottom: 3px; 
     }
 
-.babble1 { 
+.chat1 { 
     background-color: #eeeeee; 
     font: 10px Verdana; 
     margin: 0px; 
     padding: 2px; 
     }
 
-.babble2 { 
+.chat2 { 
     background-color: #ffffff; 
     font: 10px Verdana; 
     margin: 0px; 
@@ -83,4 +83,18 @@ a:hover {
     left: 90px; 
     background-color: #ffffcc;
     layer-background-color: #ffffcc;
-    }
+}
+
+.label {
+    font: 10px/12px Arial,Helvetica,sans-serif; 
+    border: solid 1px #666666; 
+    width: 270px; 
+    padding: 1px;
+    position: absolute; 
+    z-index: 100;
+    color: #333333; 
+    top: 20px;
+    left: 90px; 
+    background-color: #ffffcc;
+    layer-background-color: #ffffcc;
+}
