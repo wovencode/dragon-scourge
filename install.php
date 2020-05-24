@@ -15,8 +15,8 @@
 //	(see our website for that).
 
 include_once("config/config.php");
-include_once("scripts/db.php");
-include_once("scripts/tpl.php");
+include_once("scripts/db.inc.php");
+include_once("scripts/tpl.inc.php");
 
 $page = "one";
 
