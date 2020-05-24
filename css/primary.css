@@ -88,7 +88,7 @@ a:hover {
 .label {
     font: 10px/12px Arial,Helvetica,sans-serif; 
     border: solid 1px #666666; 
-    width: 270px; 
+    display: inline-block;
     padding: 1px;
     position: absolute; 
     z-index: 100;

@@ -13,7 +13,7 @@ function latToY($lat, $worldsize, $perpix) : int
 	if ($lat >= 0) {
 		$y = ceil(($worldsize - $lat) * $perpix);
 	} else {
-		$y = ($worldsize/2) + ceil(($lat * -1) * $perpix);
+		$y = ($worldsize/*/2*/) + ceil(($lat * -1) * $perpix);
 	}
 	
 	return $y;
@@ -27,7 +27,7 @@ function lonToX($lon, $worldsize, $perpix) : int
 	$x = 0;
 	
 	if ($lon >= 0) {
-		$x = ($worldsize/2) + ceil($lon * $perpix);
+		$x = ($worldsize/*/2*/) + ceil($lon * $perpix);
 	} else {
 		$x = ceil(($worldsize + $lon) * $perpix);
 	}
@@ -56,10 +56,11 @@ function draw_map($size=500) : string
 	$lon = $userrow["longitude"];
 	$x = lonToX($lon, $worldsize, $perpix);
 	$y = latToY($lat, $worldsize, $perpix);
-	$html .= "<img style=\"z-index: 3; position: relative; width:".$perpix."px; height:".$perpix."px; left:".($x*$perpix)."px; top:".($y*$perpix).";\" src=\"images/map/ping_blue.png\">";
+	
+	$html .= "<img style=\"z-index: 9; position: relative; width:".$perpix."px; height:".$perpix."px; left:".($x*$perpix)."px; top:".($y*$perpix).";\" src=\"images/map/ping_blue.png\">";
 	
 	if ($size >= 500)
-		$html .= "<div class=\"label\" style=\"z-index: 4; position: relative; left:".($x*$perpix)."px; top:".($y*$perpix).";\">".$userrow["charname"]."</div>";
+		$html .= "<div class=\"label\" style=\"z-index: 8; position: relative; left:".($x*$perpix)."px; top:".($y*$perpix).";\">".$userrow["charname"]."</div>";
 		
 	// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 	// MAIN QUEST
@@ -72,10 +73,11 @@ function draw_map($size=500) : string
 		$lon = $story["longitude"];
 		$x = lonToX($lon, $worldsize, $perpix);
 		$y = latToY($lat, $worldsize, $perpix);
-		$html .= "<img style=\"z-index: 3; position: relative; width:".$perpix."px; height:".$perpix."px; left:".($x*$perpix)."px; top:".($y*$perpix).";\" src=\"images/map/ping_purple.png\">";
+		
+		$html .= "<img style=\"z-index: 7; position: relative; width:".$perpix."px; height:".$perpix."px; left:".($x*$perpix)."px; top:".($y*$perpix).";\" src=\"images/map/ping_purple.png\">";
 		
 		if ($size >= 500)
-			$html .= "<div class=\"label\" style=\"z-index: 4; position: relative; left:".($x*$perpix)."px; top:".($y*$perpix).";\">".$story["title"]."</div>";
+			$html .= "<div class=\"label\" style=\"z-index: 6; position: relative; left:".($x*$perpix)."px; top:".($y*$perpix).";\">".$story["title"]."</div>";
 		
 	}
 	
@@ -90,7 +92,7 @@ function draw_map($size=500) : string
     	$lon = $town["longitude"];
 		$x = lonToX($lon, $worldsize, $perpix);
 		$y = latToY($lat, $worldsize, $perpix);
-		$html .= "<img style=\"z-index: 3; position: relative; width:".$perpix."px; height:".$perpix."px; left:".($x*$perpix)."px; top:".($y*$perpix).";\" src=\"images/map/ping_town.png\">";
+		$html .= "<img style=\"z-index: 5; position: relative; width:".$perpix."px; height:".$perpix."px; left:".($x*$perpix)."px; top:".($y*$perpix).";\" src=\"images/map/ping_town.png\">";
 		
 		if ($size >= 500)
 			$html .= "<div class=\"label\" style=\"z-index: 4; position: relative; left:".($x*$perpix)."px; top:".($y*$perpix).";\">".$town["name"]."</div>";
@@ -112,7 +114,7 @@ function draw_map($size=500) : string
 			$html .= "<img style=\"z-index: 3; position: relative; width:".$perpix."px; height:".$perpix."px; left:".($x*$perpix)."px; top:".($y*$perpix).";\" src=\"images/map/ping_town.png\">";
 			
 			if ($size >= 500)
-				$html .= "<div class=\"label\" style=\"z-index: 4; position: relative; left:".($x*$perpix)."px; top:".($y*$perpix).";\">".$user["charname"]."</div>";
+				$html .= "<div class=\"label\" style=\"z-index: 2; position: relative; left:".($x*$perpix)."px; top:".($y*$perpix).";\">".$user["charname"]."</div>";
 		}
 
 	}
