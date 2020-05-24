@@ -61,8 +61,6 @@ CREATE TABLE `<<control>>` (
   `cookiedomain` varchar(255) NOT NULL default '',
   `showshout` tinyint(3) unsigned NOT NULL default '0',
   `showonline` tinyint(3) unsigned NOT NULL default '0',
-  `showitemimages` tinyint(3) unsigned NOT NULL default '0',
-  `showmonsterimages` tinyint(3) unsigned NOT NULL default '0',
   `showsigbot` tinyint(3) unsigned NOT NULL default '0',
   `adminemail` varchar(200) NOT NULL default '',
   `verifyemail` tinyint(3) unsigned NOT NULL default '0',

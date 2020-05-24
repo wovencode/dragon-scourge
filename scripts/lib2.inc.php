@@ -115,13 +115,7 @@ function builditem($prefix, $baseitem, $suffix, $modrow) { // Copy of town.php's
         $baseitem["energy"] .= "<br />\n";
     }
     
-    if ($controlrow["showitemimages"] == 1) { 
-        $baseitem["image"] = "<img src=\"images/items/".$baseitem["slotnumber"].$acctrow["imageformat"]."\" alt=\"".$baseitem["name"]."\" title=\"".$baseitem["name"]."\" />";
-    } elseif ($controlrow["showitemimages"] == 2) { 
-        $baseitem["image"] = "<img src=\"images/items/".$baseitem["id"].$acctrow["imageformat"]."\" alt=\"".$baseitem["name"]."\" title=\"".$baseitem["name"]."\" />";
-    } else {
-        $baseitem["image"] = "";
-    }
+    $baseitem["image"] = "<img src=\"images/items/".$baseitem["slotnumber"].$acctrow["imageformat"]."\" alt=\"".$baseitem["name"]."\" title=\"".$baseitem["name"]."\" />";
     
     // And send it back.
     return $baseitem;

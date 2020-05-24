@@ -260,8 +260,6 @@ function four() {
         cookiedomain='',
         showshout='$showshout',
         showonline='$showonline',
-        showitemimages='1',
-        showmonsterimages='0',
         showsigbot='$showsigbot',
         adminemail='$adminemail',
         verifyemail='$verifyemail',
