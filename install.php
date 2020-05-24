@@ -341,8 +341,7 @@ function five() {
         authlevel='255',
         language='English',
         characters='0',
-        activechar='0',
-        minimap='1'
+        activechar='0'
         ");
         
     // Done with the controlrow creator. Now show admin user creation form.'

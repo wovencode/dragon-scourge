@@ -67,8 +67,6 @@ function register() {
         $emailquery = doquery("SELECT emailaddress FROM <<accounts>> WHERE emailaddress='$email1' LIMIT 1");
         if (mysqli_num_rows($emailquery) > 0) { $errors++; $errorlist .= "Email already taken - unique email address required.<br />"; }
         
-        // Process other stuff.
-        if (!is_numeric($minimap)) { $errors++; $errorlist .= "Invalid input for minimap selection.<br />"; }
         
         if ($errors == 0) {
             
@@ -83,7 +81,7 @@ function register() {
             }
             
             // Now update.
-            $query = doquery("INSERT INTO <<accounts>> SET id='',regdate=NOW(),regip='".$_SERVER["REMOTE_ADDR"]."',verifycode='$verifycode',username='$username',password='$password',emailaddress='$email1',language='English',minimap='$minimap'") or die(mysqli_error());
+            $query = doquery("INSERT INTO <<accounts>> SET id='',regdate=NOW(),regip='".$_SERVER["REMOTE_ADDR"]."',verifycode='$verifycode',username='$username',password='$password',emailaddress='$email1',language='English'") or die(mysqli_error());
             
             // Send confirmation email if necessary.
             if ($controlrow["verifyemail"] == 1) {
@@ -107,7 +105,6 @@ function register() {
         
     }
 
-    $row["minimap"] = "<option value=\"1\">Yes</option><option value=\"0\">No</option>";
     display(parsetemplate(gettemplate("users_register1"), $row), false);
     
 }
@@ -228,12 +225,9 @@ function settings() {
         $emailquery = doquery("SELECT emailaddress FROM <<accounts>> WHERE emailaddress='$email' AND id != '".$acctrow["id"]."' LIMIT 1");
         if (mysqli_num_rows($emailquery) > 0) { $errors++; $errorlist .= "Email already taken - unique email address required.<br />"; }
         
-        // Process other stuff.
-        if (!is_numeric($minimap)) { $errors++; $errorlist .= "Invalid input for minimap selection.<br />"; }
-        
         if ($errors == 0) { 
             
-            $query = doquery("UPDATE <<accounts>> SET $password emailaddress='$email', minimap='$minimap' WHERE id='".$acctrow["id"]."' LIMIT 1");
+            $query = doquery("UPDATE <<accounts>> SET $password emailaddress='$email' WHERE id='".$acctrow["id"]."' LIMIT 1");
         
             if (isset($newpass)) { 
                 setcookie("scourge", "", (time()-3600), "/", "", 0);
@@ -255,12 +249,7 @@ function settings() {
     
     $row["emailaddress"] = $acctrow["emailaddress"];
     $row["language"] = "<option value=\"English\">English</option>";
-        
-    if ($acctrow["minimap"] == 0) {
-        $row["minimap"] = "<option value=\"1\">Yes</option><option value=\"0\" selected=\"selected=\">No</option>";
-    } else {
-        $row["minimap"] = "<option value=\"1\">Yes</option><option value=\"0\">No</option>";
-    }
+    
     display(parsetemplate(gettemplate("users_settings"), $row));
     
 }

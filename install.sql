@@ -11,7 +11,6 @@ CREATE TABLE `<<accounts>>` (
   `language` varchar(30) NOT NULL default '',
   `characters` tinyint(3) unsigned NOT NULL default '0',
   `activechar` int(10) unsigned NOT NULL default '0',
-  `minimap` tinyint(3) unsigned NOT NULL default '0',
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM ;
 
