@@ -105,7 +105,7 @@ function register() {
         
     }
 
-    display(parsetemplate(gettemplate("users_register1"), $row), false);
+    display(gettemplate("users_register1"), false);
     
 }
 
