@@ -115,7 +115,7 @@ function builditem($prefix, $baseitem, $suffix, $modrow) { // Copy of town.php's
         $baseitem["energy"] .= "<br />\n";
     }
     
-    $baseitem["image"] = "<img src=\"images/items/".$baseitem["slotnumber"].".png\" alt=\"".$baseitem["name"]."\" title=\"".$baseitem["name"]."\" />";
+    $baseitem["image"] = "<img src=\"images/items/".$baseitem["image"]."\" alt=\"".$baseitem["name"]."\" title=\"".$baseitem["name"]."\" />";
     
     // And send it back.
     return $baseitem;
