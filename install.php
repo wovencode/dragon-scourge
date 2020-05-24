@@ -342,7 +342,6 @@ function five() {
         language='English',
         characters='0',
         activechar='0',
-        imageformat='.png',
         minimap='1'
         ");
         

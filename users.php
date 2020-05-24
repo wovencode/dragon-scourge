@@ -68,7 +68,6 @@ function register() {
         if (mysqli_num_rows($emailquery) > 0) { $errors++; $errorlist .= "Email already taken - unique email address required.<br />"; }
         
         // Process other stuff.
-        if ($imageformat != ".png" && $imageformat != ".gif") { $errors++; $errorlist .= "Invalid input for image format selection.<br />"; }
         if (!is_numeric($minimap)) { $errors++; $errorlist .= "Invalid input for minimap selection.<br />"; }
         
         if ($errors == 0) {
@@ -84,7 +83,7 @@ function register() {
             }
             
             // Now update.
-            $query = doquery("INSERT INTO <<accounts>> SET id='',regdate=NOW(),regip='".$_SERVER["REMOTE_ADDR"]."',verifycode='$verifycode',username='$username',password='$password',emailaddress='$email1',language='English',imageformat='$imageformat', minimap='$minimap'") or die(mysqli_error());
+            $query = doquery("INSERT INTO <<accounts>> SET id='',regdate=NOW(),regip='".$_SERVER["REMOTE_ADDR"]."',verifycode='$verifycode',username='$username',password='$password',emailaddress='$email1',language='English',minimap='$minimap'") or die(mysqli_error());
             
             // Send confirmation email if necessary.
             if ($controlrow["verifyemail"] == 1) {
@@ -108,7 +107,6 @@ function register() {
         
     }
 
-    $row["imageformat"] = "<option value=\".png\">PNG</option><option value=\".gif\">GIF</option>";
     $row["minimap"] = "<option value=\"1\">Yes</option><option value=\"0\">No</option>";
     display(parsetemplate(gettemplate("users_register1"), $row), false);
     
@@ -231,12 +229,11 @@ function settings() {
         if (mysqli_num_rows($emailquery) > 0) { $errors++; $errorlist .= "Email already taken - unique email address required.<br />"; }
         
         // Process other stuff.
-        if ($imageformat != ".png" && $imageformat != ".gif") { $errors++; $errorlist .= "Invalid input for image format selection.<br />"; }
         if (!is_numeric($minimap)) { $errors++; $errorlist .= "Invalid input for minimap selection.<br />"; }
         
         if ($errors == 0) { 
             
-            $query = doquery("UPDATE <<accounts>> SET $password emailaddress='$email', imageformat='$imageformat', minimap='$minimap' WHERE id='".$acctrow["id"]."' LIMIT 1");
+            $query = doquery("UPDATE <<accounts>> SET $password emailaddress='$email', minimap='$minimap' WHERE id='".$acctrow["id"]."' LIMIT 1");
         
             if (isset($newpass)) { 
                 setcookie("scourge", "", (time()-3600), "/", "", 0);
@@ -258,11 +255,7 @@ function settings() {
     
     $row["emailaddress"] = $acctrow["emailaddress"];
     $row["language"] = "<option value=\"English\">English</option>";
-    if ($acctrow["imageformat"] == ".png") { 
-        $row["imageformat"] = "<option value=\".png\" selected=\"selected\">PNG</option><option value=\".gif\">GIF</option>";
-    } else {
-        $row["imageformat"] = "<option value=\".png\">PNG</option><option value=\".gif\" selected=\"selected\">GIF</option>";
-    }
+        
     if ($acctrow["minimap"] == 0) {
         $row["minimap"] = "<option value=\"1\">Yes</option><option value=\"0\" selected=\"selected=\">No</option>";
     } else {
