@@ -29,7 +29,7 @@ $template = <<<END
 <body>
 	<center>
 
-	<table cellspacing="0" cellpadding="3" style="width: 100%; height: 100%; border: solid 1px black; background-color: white; ">
+	<table cellspacing="0" cellpadding="3" class="page" style="border: solid 1px black; background-color: white; ">
 
 	  <tr>
 		<td colspan="3" style="border-bottom: solid 1px #cccccc;">
@@ -49,9 +49,9 @@ $template = <<<END
 		</td>
 		
 		<td valign="top" style="height: 100%;">
-		  <div style="overflow: auto;">
-		  <div class="big"><b>{{pagetitle}}</b></div>
-		  {{content}}
+		  <div class="content">
+		  	<div class="big"><b>{{pagetitle}}</b></div>
+		  	{{content}}
 		  </div>
 		</td>
 		
