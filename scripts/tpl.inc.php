@@ -46,10 +46,6 @@ function display($content, $panels = true) {
     
     global $controlrow, $userrow, $worldrow, $starttime;
     
-    if (!isset($controlrow)) {
-        $controlrow = dorow(doquery("SELECT * FROM <<control>> WHERE id='1' LIMIT 1"));
-    }
-
     $page = gettemplate("primary");
     
     // Setup for primary page array indexes.
@@ -61,8 +57,6 @@ function display($content, $panels = true) {
     	$row["background"] 	.= $userrow["world"];
     $row["content"] 	= $content;
    
-    if ($controlrow["forumurl"] != "") { $row["forumslink"] = "<a href=\"".$controlrow["forumurl"]."\">Support Forums</a>"; } else { $row["forumslink"] = ""; }
-    
     // Setup for side panels.
     #include("panels.php");
     if ($panels == true) { 

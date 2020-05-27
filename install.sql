@@ -51,7 +51,6 @@ CREATE TABLE `<<control>>` (
   `gameopen` tinyint(3) unsigned NOT NULL default '0',
   `gamepath` varchar(200) NOT NULL default '',
   `gameurl` varchar(200) NOT NULL default '',
-  `forumurl` varchar(200) NOT NULL default '',
   `avatarpath` varchar(200) NOT NULL default '',
   `avatarurl` varchar(200) NOT NULL default '',
   `avatarmaxsize` int(10) unsigned NOT NULL default '0',

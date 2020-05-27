@@ -28,10 +28,10 @@ $template = <<<THEVERYENDOFYOU
             
             <table border="1">
                 <tr><th colspan="2">Verify Settings</th></tr>
-                <tr><td>MySQL Connection</td><td>$mysqlresult</td></tr>
-                <tr><td>MySQL Database</td><td>$dbresult</td></tr>
-                <tr><td>File Permissions: /images/users/</td><td>$users</td></tr>
-                <tr><td>File Permissions: /images/botcheck/</td><td>$botcheck</td></tr>
+                <tr><td>MySQL Connection</td><td>{{mysqlresult}}</td></tr>
+                <tr><td>MySQL Database</td><td>{{dbresult}}</td></tr>
+                <tr><td>File Permissions: /images/users/</td><td>{{users}}</td></tr>
+                <tr><td>File Permissions: /images/botcheck/</td><td>{{botcheck}}</td></tr>
             </table><br /><br />
             
             If any of the above settings display <span style="color: red;">Fail</span>, please go back and make sure everything is correct.<br /><br />

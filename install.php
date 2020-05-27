@@ -62,12 +62,14 @@ function one() {
     }
     
     // Display status.
-    if ($botcheck) { $botcheck = "<span style=\"color: Green;\">Pass</span>"; } else { $botcheck = "<span style=\"color: red;\">Fail</span>"; }
-    if ($users) { $users = "<span style=\"color: Green;\">Pass</span>"; } else { $users = "<span style=\"color: red;\">Fail</span>"; }
-    if (connectDatabase()) { $mysqlresult = "<span style=\"color: Green;\">Pass</span>"; } else { $mysqlresult = "<span style=\"color: red;\">Fail</span>"; }
-    if (selectDatabase()) { $dbresult = "<span style=\"color: Green;\">Pass</span>"; } else { $dbresult = "<span style=\"color: red;\">Fail</span>"; }
+    $data = array();
     
- 	display(gettemplate("install1"), false);
+    if ($botcheck) { $data["botcheck"] = "<span style=\"color: Green;\">Pass</span>"; } else { $data["botcheck"] = "<span style=\"color: red;\">Fail</span>"; }
+    if ($users) { $data["users"] = "<span style=\"color: Green;\">Pass</span>"; } else { $data["users"] = "<span style=\"color: red;\">Fail</span>"; }
+    if (connectDatabase()) { $data["mysqlresult"] = "<span style=\"color: Green;\">Pass</span>"; } else { $data["mysqlresult"] = "<span style=\"color: red;\">Fail</span>"; }
+    if (selectDatabase()) { $data["dbresult"] = "<span style=\"color: Green;\">Pass</span>"; } else { $data["dbresult"] = "<span style=\"color: red;\">Fail</span>"; }
+    
+ 	display(parsetemplate(gettemplate("install1"), $data), false);
 
 }
 
@@ -89,14 +91,15 @@ display(gettemplate("install2"), false);
 function three() {
     
     // Path stuff. Easy.
-    $gamepath = str_replace("install.php","",__FILE__);
-    $gamepath = str_replace("\\","/",$gamepath);
-    $avatarpath = $gamepath . "images/users/";
-    $gameurl = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"];
-    $gameurl = str_replace("install.php","",$gameurl);
-    $avatarurl = $gameurl . "images/users/";
+    $data = array();
+    $data["gamepath"] = str_replace("install.php","",__FILE__);
+    $data["gamepath"] = str_replace("\\","/",$data["gamepath"]);
+    $data["avatarpath"] = $data["gamepath"] . "images/users/";
+    $data["gameurl"] = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"];
+    $data["gameurl"] = str_replace("install.php","",$data["gameurl"]);
+    $data["avatarurl"] = $data["gameurl"] . "images/users/";
     
-display(gettemplate("install3"), false);
+	display(parsetemplate(gettemplate("install3"), $data), false);
 
 }
 
@@ -131,7 +134,6 @@ function four() {
         gameopen='1',
         gamepath='$gamepath',
         gameurl='$gameurl',
-        forumurl='$forumurl',
         avatarpath='$avatarpath',
         avatarurl='$avatarurl',
         avatarmaxsize='$avatarmaxsize',
